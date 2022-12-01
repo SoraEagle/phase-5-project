@@ -3,4 +3,9 @@ class Flashcard < ApplicationRecord
     belongs_to :deck
 
     # Validations
+    validates :user, :deck, presence: true
+    validates :question, presence: true, length: {minimum: 10}
+    validates :answer, presence: true
+
+    # What other constraints are needed?
 end
