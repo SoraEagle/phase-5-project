@@ -1,18 +1,18 @@
 import {v4 as uuid} from "uuid";
 import { createSlice } from "@reduxjs/toolkit";
 // Action Creators
-const usersSlice = createSlice({
-    name: "users",
+const bindersSlice = createSlice({
+    name: "binders",
     initialState: {
-        entities: [], // Array of Users
+        entities: [], // Array of Binders
     },
     // Reducers
     reducers: {
-        userAdded(state, action){
+        binderAdded(state, action){
             state.entities.push({id: uuid(), ...action.payload});
         },
     },
 });
 
-export const {userAdded} = usersSlice.actions;
-export default usersSlice.reducer;
+export const {binderAdded} = bindersSlice.actions;
+export default bindersSlice.reducer;
