@@ -19,7 +19,6 @@ function App() {
   if(!currentUser) return (
     <Router>
       <Login onLogin={setCurrentUser} errors={errors} setErrors={setErrors} isLoading={isLoading} setIsLoading={setIsLoading} />
-      <Footer />
     </Router>
   )
 
