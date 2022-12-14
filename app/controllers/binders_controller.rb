@@ -14,6 +14,7 @@ class BindersController < ApplicationController
             end
         else
             render json: {errors: binder.errors.full_messages}, status: :unauthorized
+        end
     end
 
     def update
