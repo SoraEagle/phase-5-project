@@ -5,7 +5,9 @@ function Footer(){
     <footer id="footer" style={{
         textAlign: "center"
     }}>
-        <p style={{textAlign: "left"}}><a href="#">Top of Page</a></p>
+        <p style={{textAlign: "left"}}>
+          {/* <a href="#">Top of Page</a> */}
+          </p>
     </footer>
   )
 }

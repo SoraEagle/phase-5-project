@@ -1,6 +1,6 @@
 import React from 'react';
 
-function NavBar({setCurrentUser, setErrors}){
+function NavBar({currentUser, setCurrentUser, setErrors}){
     function handleLogoutClick(){
         setErrors(null);
 
@@ -10,6 +10,7 @@ function NavBar({setCurrentUser, setErrors}){
     }
   return (
     <div id="nav">
+      <div>Hello, {currentUser.username}</div>
         <button onClick={handleLogoutClick}>Log Out</button>
     </div>
   )
