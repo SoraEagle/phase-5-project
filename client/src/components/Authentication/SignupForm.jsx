@@ -2,6 +2,7 @@ import React from 'react';
 import {headers} from "../../Globals";
 
 function SignupForm({onLogin, username, setUsername, password, setPassword, errors, setErrors, isLoading, setIsLoading}){
+
     function handleSubmit(e){
         e.preventDefault();
         setIsLoading(true);
@@ -31,16 +32,18 @@ function SignupForm({onLogin, username, setUsername, password, setPassword, erro
             </div>
             <div>
                 <label htmlFor='password'>Password</label>
-                <input type="text" id="password" value={password}
-                    autoComplete="off"
+                <input type="password" id="password" name="password"
+                    value={password} autoComplete="off"
                     onChange={e => setPassword(e.target.value)}
                 />
             </div>
             <input type="submit" value={isLoading ? "Loading..." : "Sign Up"} />
             <div>
-                {errors?.map((err) => (
-                    <p key={err}>{err}</p>
-                ))}
+                {
+                    errors ? (errors?.map((err) => (
+                        <p key={err}>{err}</p>
+                    ))) : (setErrors(null))
+                }
             </div>
         </form>
     </div>
