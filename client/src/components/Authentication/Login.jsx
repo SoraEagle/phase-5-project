@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
-import UsersContainer from '../../features/users/UsersContainer';
+import UserInput from '../../features/users/UserInput';
 
 function Login({currentUser, onLogin, errors, setErrors, isLoading, setIsLoading}){
     const [showLogin, setShowLogin] = useState(true);
@@ -29,7 +29,7 @@ function Login({currentUser, onLogin, errors, setErrors, isLoading, setIsLoading
                     errors={errors} setErrors={setErrors}
                     isLoading={isLoading} setIsLoading={setIsLoading}
                 />
-                <UsersContainer currentUser={currentUser} onLogin={onLogin} 
+                <UserInput currentUser={currentUser} onLogin={onLogin} 
                     username={username} setUsername={setUsername}
                     password={password} setPassword={setPassword}
                     errors={errors} setErrors={setErrors}
