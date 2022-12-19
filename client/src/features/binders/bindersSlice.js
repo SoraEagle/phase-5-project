@@ -1,15 +1,17 @@
-import {v4 as uuid} from "uuid";
 import { createSlice } from "@reduxjs/toolkit";
 // Action Creators
+// fetchBinders
+
 const bindersSlice = createSlice({
     name: "binders",
     initialState: {
-        entities: [], // Array of Binders
+        binders: [], // Array of Binders
+        status: "idle",
     },
     // Reducers
     reducers: {
         binderAdded(state, action){
-            state.entities.push({id: uuid(), ...action.payload});
+            state.binders.push(action.payload);
         },
     },
 });

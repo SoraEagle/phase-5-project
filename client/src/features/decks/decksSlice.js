@@ -1,19 +1,21 @@
-import {v4 as uuid} from "uuid";
 import { createSlice } from "@reduxjs/toolkit";
 // Action Creators
+// fetchDecks
+
 const decksSlice = createSlice({
     name: "decks",
     initialState: {
-        entites: [], // Array of Decks
+        decks: [], // Array of Decks
+        status: "idle",
     },
     // Reducers
     reducers: {
         deckAdded(state, action){
-            state.entities.push({id: uuid(), ...action.payload});
+            return state.decks.push(action.payload);
         },
         deckRemoved(state, action){
-            const index = state.entites.findIndex((d) => d.id === action.payload);
-            state.entites.splice(index, 1);
+            // const index = state.entites.findIndex((d) => d.id === action.payload);
+            // state.entites.splice(index, 1);
         },
     },
 });
