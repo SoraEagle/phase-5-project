@@ -1,9 +1,27 @@
-import React from 'react'
+import React, {useState} from 'react';
 
-function deckInput(){
+function DeckInput({onDeckSubmit}){
+  const [name, setName] = useState("");
+
+  function handleInputChange(e){
+    setName(e.target.value);
+  }
+  function handleSubmit(e){
+    e.preventDefault();
+    onDeckSubmit(name);
+  }
   return (
-    <form></form>
+    <form onSubmit={handleSubmit}>
+      <label>
+        Deck Name
+        <input 
+          type="text" name="name"
+          value={name} onChange={handleInputChange}
+        />
+      </label>
+      <button type="submit">Create Deck</button>
+    </form>
   )
 }
 
-export default deckInput;
+export default DeckInput;
