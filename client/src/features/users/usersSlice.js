@@ -10,6 +10,7 @@ export const fetchUsers = createAsyncThunk("users/fetchUsers", async () => {
 
 export const signup = createAsyncThunk("users/signup", async ({username, password}, thunkAPI) => {
     try {
+        debugger
         const response = await fetch("/signup", {
             method: "POST",
             headers: headers,
@@ -17,31 +18,30 @@ export const signup = createAsyncThunk("users/signup", async ({username, passwor
         })
         .then((user) => {
             user.json().then((user) => {
-                debugger
                 console.log(user);
             })
         })
 
-        // let data = await response.json();
-        // console.log("Data: ", data);
+        let data = await response.json();
+        console.log("Data: ", data);
 
-        // if(response.status === 200){
-        //     debugger
-        //     localStorage.setItem("token", data.token)
-        //     return {...data, username, password}
-        // } else{
-        //     debugger
-        //     return thunkAPI.rejectWithValue(data);
-        // }
+        if(response.status === 200){
+            localStorage.setItem("token", data.token)
+            return {...data, username, password}
+        } else{
+            return thunkAPI.rejectWithValue(data);
+        }
 
-        console.log("User: ", response.user);
-        return response.user;
+        // console.log("User: ", response.user);
+        // return response.user;
 
     } catch (e) {
         console.log("Error", e.response.data);
         return thunkAPI.rejectWithValue(e.response.data);
     }
 });
+
+// export const logout = createAsyncThunk("users/logout")
 
 const usersSlice = createSlice({
     name: "users",

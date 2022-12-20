@@ -17,7 +17,6 @@ function App(){
 
   useEffect(() => { // Auto login
     // dispatch(fetchUsers());
-    console.log(dispatch(fetchUsers()));
     fetch("/me").then((r) => {
       if(r.ok) {
         r.json().then((currentUser) => setCurrentUser(currentUser));

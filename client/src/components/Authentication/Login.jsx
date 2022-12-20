@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import LoginForm from './LoginForm';
-import SignupForm from './SignupForm';
 import UserInput from '../../features/users/UserInput';
 
 function Login({currentUser, onLogin, errors, setErrors, isLoading, setIsLoading}){
