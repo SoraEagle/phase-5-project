@@ -10,9 +10,9 @@ class ApplicationController < ActionController::API
     return user
   end
 
-  def set_user
-    return logged_in_user = User.find(session[:user_id])
-  end
+  # def set_user
+  #   return logged_in_user = User.find(session[:user_id])
+  # end
 
   def authorize
     render json: {errors: ["Not authorized"]}, status: :unauthorized unless current_user

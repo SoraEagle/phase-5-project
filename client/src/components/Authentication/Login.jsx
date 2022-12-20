@@ -23,12 +23,12 @@ function Login({currentUser, onLogin, errors, setErrors, isLoading, setIsLoading
             </div>
         ) : (
             <div>
-                <SignupForm onLogin={onLogin}
+                {/* <SignupForm onLogin={onLogin}
                     username={username} setUsername={setUsername}
                     password={password} setPassword={setPassword}
                     errors={errors} setErrors={setErrors}
                     isLoading={isLoading} setIsLoading={setIsLoading}
-                />
+                /> */}
                 <UserInput currentUser={currentUser} onLogin={onLogin} 
                     username={username} setUsername={setUsername}
                     password={password} setPassword={setPassword}

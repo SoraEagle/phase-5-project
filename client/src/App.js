@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { fetchUsers } from './features/users/usersSlice';
 import './App.css';
 import NavBar from './components/Navigation/NavBar';
 import Footer from './components/Footer';
@@ -11,13 +13,17 @@ function App(){
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState(null);
 
+  const dispatch = useDispatch();
+
   useEffect(() => { // Auto login
+    // dispatch(fetchUsers());
+    console.log(dispatch(fetchUsers()));
     fetch("/me").then((r) => {
       if(r.ok) {
         r.json().then((currentUser) => setCurrentUser(currentUser));
       }
     });
-  }, []);
+  }, [dispatch]);
 
   if(!currentUser) return (
     <Router>
