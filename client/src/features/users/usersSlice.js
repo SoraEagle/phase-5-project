@@ -1,32 +1,31 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { headers } from "../../Globals";
-import axios from "axios";
 
 // Action Creators
 export const fetchUsers = createAsyncThunk("users/fetchUsers", async () => {
-    const response = await axios.get("/me");
-    return response.data;
+    return fetch("/me")
+    .then((r) => r.json())
+    .then((data) => data.user);
 }); 
 
 export const signup = createAsyncThunk("users/signup", async ({username, password}, thunkAPI) => {
     try {
-        debugger
+        // debugger
         const response = await fetch("/signup", {
             method: "POST",
             headers: headers,
             body: JSON.stringify({user: {username, password}})
         })
-        .then((user) => {
-            user.json().then((user) => {
-                console.log(user);
-            })
-        })
+        // .then((user) => {
+        //     user.json().then((user) => {
+        //         console.log(user);
+        //     })
+        // })
 
         let data = await response.json();
         console.log("Data: ", data);
 
         if(response.status === 200){
-            localStorage.setItem("token", data.token)
             return {...data, username, password}
         } else{
             return thunkAPI.rejectWithValue(data);
@@ -47,8 +46,6 @@ const usersSlice = createSlice({
     name: "users",
     initialState: {
         users: [],
-        username: "",
-        password: "",
         isFetching: false,
         isSuccess: false,
         isError: false,
@@ -79,7 +76,7 @@ const usersSlice = createSlice({
             })
             .addCase(fetchUsers.rejected, (state, action) => {
                 state.status = "failed";
-                state.error = action.error.message;
+                state.errorMessage = action.error.message;
             })
             .addCase(signup.pending, (state) => {
                 state.isFetching = true;
