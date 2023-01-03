@@ -6,10 +6,7 @@ class User < ApplicationRecord
     has_many :binders, through: :decks
 
     # Validations
-    validates :username, presence: true, uniqueness: true, length: {minimum: 5}, 
-    exclusion: {
-        in: %w(+ - = _ @ npm), message: "%{value} is not allowed!"
-    }
+    validates :username, presence: true, uniqueness: true, length: {minimum: 5}
     validates :password, presence: true, length: {minimum: 4}
 
     # What other constraints are needed?

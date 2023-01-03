@@ -45,7 +45,7 @@ function UserInput({onLogin, username, setUsername, password, setPassword, error
       <div>
         <label>
           Password
-          <input type="text" 
+          <input type="password" 
             id='password' name="password" value={password}
             placeholder='Password'
             onChange={e => setPassword(e.target.value)}
