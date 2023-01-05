@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :username
 
   has_many :flashcards
   has_many :decks, through: :flashcards
