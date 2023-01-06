@@ -32,7 +32,7 @@ function LoginForm({onLogin, username, setUsername, password, setPassword, error
             </div>
             <div>
                 <label htmlFor='password'>Password</label>
-                <input type="text"
+                <input type="password"
                     id='password' value={password}
                     autoComplete="off" onChange={e => setPassword(e.target.value)}
                 />
