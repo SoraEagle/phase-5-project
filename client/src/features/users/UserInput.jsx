@@ -9,14 +9,15 @@ function UserInput({onLogin, username, setUsername, password, setPassword, error
   function handleSubmit(e){
     e.preventDefault();
 
-    const user ={
+    const user = {
       username: username,
-      password: password
+      password: password,
+      errors: null
     }
 
     dispatch(signup(user));
-    console.log("User: ", user);
-    if(user.errors) {
+    debugger
+    if(user.errors){
       setErrors(user.errors);
     }
     else{
@@ -56,9 +57,12 @@ function UserInput({onLogin, username, setUsername, password, setPassword, error
         <button type="submit">Create Account</button>
       </div>
       <div>
-                {errors?.map((err) => (
+                {
+                  errors ?
+                (errors?.map((err) => (
                     <p key={err}>{err}</p>
-                ))}
+                  ))) : (setErrors(null))
+                }
             </div>
     </form>
     </div>
