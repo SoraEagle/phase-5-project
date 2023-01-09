@@ -6,24 +6,16 @@ import { useDispatch } from 'react-redux';
 function UserInput({onLogin, username, setUsername, password, setPassword, errors, setErrors}){
   const dispatch = useDispatch();
 
+  const userData = {
+    username: username,
+    password: password,
+    errors: null
+  }
+
   function handleSubmit(e){
     e.preventDefault();
-
-    const user = {
-      username: username,
-      password: password,
-      errors: null
-    }
-
-    dispatch(signup(user));
-    debugger
-    if(user.errors){
-      setErrors(user.errors);
-    }
-    else{
-      setErrors(null);
-      onLogin(user);
-    }
+    // debugger
+    dispatch(signup(userData));
   }
   return (
     <div>
