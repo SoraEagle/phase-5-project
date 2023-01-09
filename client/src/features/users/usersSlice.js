@@ -6,94 +6,95 @@ export const fetchUsers = createAsyncThunk("users/fetchUsers", async () => {
     return fetch("/me")
     .then((r) => r.json())
     .then((data) => data.user);
-}); 
-
-export const signup = createAsyncThunk("users/signup", async ({username, password}, thunkAPI) => {
-    try {
-        // debugger
-        const response = await fetch("/signup", {
-            method: "POST",
-            headers: headers,
-            body: JSON.stringify({user: {username, password}})
-        })
-        // .then((user) => {
-        //     user.json().then((user) => {
-        //         console.log(user);
-        //     })
-        // })
-
-        let data = await response.json();
-        console.log("Data: ", data);
-
-        if(response.status === 200){
-            return {...data, username, password}
-        } else{
-            return thunkAPI.rejectWithValue(data);
-        }
-
-    } catch (e) {
-        console.log("Error", e.response.data);
-        return thunkAPI.rejectWithValue(e.response.data);
-    }
 });
 
-// export const logout = createAsyncThunk("users/logout")
+export const signup = createAsyncThunk("users/signup", async (dispatch, {username, password}, thunkAPI) => {
+    // debugger
+    await fetch("/signup", {
+        method: "POST",
+        headers: headers,
+        body: JSON.stringify({user: {username, password}})
+    }).then((data) => {
+        data.json().then((data) => {
+            debugger
+            if(data.errors){
+                return thunkAPI.rejectWithValue(data.errors);
+            } else{
+                // Find a way to set currentUser!!!
+                return data;
+            }
+        })
+    })
+});
+
+// Create an login method as well!!!
+export const login = createAsyncThunk("users/login", async ({username, password}, thunkAPI) => {
+    debugger
+    fetch("/login", {
+        method: "POST",
+        headers: headers,
+        body: JSON.stringify({username, password})
+    }).then((user) => {
+        user.json().then((user) => {
+            if(user.errors) return thunkAPI.rejectWithValue(user.errors);
+            else{
+                // Find a way to set currentUser!!!
+                return user;
+            }
+        })
+    })
+});
+
+/* export const logout = createAsyncThunk("users/logout", async (dispatch, thunkAPI) => {
+    const response = await fetch("/logout", {
+        method: "DELETE"}).then((r) => {
+            if(r.ok) dispatch(userLogout());
+    });
+}) */
 
 const usersSlice = createSlice({
     name: "users",
     initialState: {
-        users: [],
-        isFetching: false,
-        isSuccess: false,
-        isError: false,
-        errorMessage: "",
+        user: [],  // This should be an SINGLE User Object!!!
+        errorMessage: null,
         status: 'idle',
     },
     reducers: {
-        userAdded(state, action){
-            state.users.push(action.payload);
+        userLogin(state, action){
+            state.user.push(action.payload);
         },
-        usersLoading(state){
-            if(state.status === 'idle') state.status = 'pending'
-        },
-        usersRecieved(state, action){
-            if(state.status === 'pending'){
-                state.setAll(state, action.payload);
-                state.status = 'idle';
-            }
+        userLogout(state){
+            state.user = [];
         },
     },
     extraReducers(builder){
         builder
             .addCase(fetchUsers.pending, (state) => {
-                state.status = 'loading'
+                state.status = 'loading';
             })
             .addCase(fetchUsers.fulfilled, (state, action) => {
-                return action.payload;
+                state.status = 'idle';
+                state.user = action.payload;
             })
-            .addCase(fetchUsers.rejected, (state, action) => {
-                state.status = "failed";
-                state.errorMessage = action.error.message;
+            .addCase(login.pending, (state) => {
+                state.status = 'loading';
             })
             .addCase(signup.pending, (state) => {
-                state.isFetching = true;
+                state.status = 'loading';
             })
             .addCase(signup.fulfilled, (state, action) => {
-                state.isFetching = false;
-                state.isSuccess = true;
+                state.status = 'idle';
+                state.errorMessage = null;
                 state.user = action.payload;
-                state.status = "succeeded";
             })
             .addCase(signup.rejected, (state, action) => {
-                state.isFetching = false;
-                state.isError = true;
                 state.status = 'failed';
-                state.errorMessage = action.error.message;
+                state.errorMessage = action.payload.errors;
             })
     }
 });
 
-export const userSelector = state => state.user;
-export const getUsersErrors = state => state.users.error;
-export const {userAdded, usersLoading, usersRecieved} = usersSlice.actions;
+// export const userSelector = state => state.user;
+// export const getUserErrors = state => state.errorMessage;
+export const {userLogin, userLogout} = usersSlice.actions;
 export default usersSlice.reducer;
