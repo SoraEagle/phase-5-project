@@ -1,49 +1,53 @@
 import React from 'react';
-import {headers} from "../../Globals";
+import { useDispatch } from 'react-redux';
+import { login } from '../../features/users/usersSlice';
 
-function LoginForm({onLogin, username, setUsername, password, setPassword, errors, setErrors, isLoading, setIsLoading}){
+function LoginForm(){
+    const dispatch = useDispatch();
+    let isLoading = false;
+
+    const userData = {
+        username: '',
+        password: '',
+        errors: null
+    }
+
+    console.log(userData.username);
+    console.log(userData.password);
+
     function handleSubmit(e){
         e.preventDefault();
-        setIsLoading(true);
-        fetch("/login", {
-            method: "POST",
-            headers: headers,
-            body: JSON.stringify({username, password})
-        }).then((user) => {
-            setIsLoading(false);
-            user.json().then((user) => {
-                if(user.errors) setErrors(user.errors);
-                else{
-                    setErrors(null);
-                    onLogin(user);
-                }
-            });
-        });
+        isLoading = true;
+        dispatch(login(userData));
+        console.log("userData: ", userData);
+        isLoading = false;
     }
   return (
-    <div onSubmit={handleSubmit}>
-        <form>
+    <div>
+        <form onSubmit={handleSubmit}>
             <div>
                 <label htmlFor='username'>Username</label>
                 <input type="text"
-                    id='username' value={username}
-                    autoComplete="off" onChange={e => setUsername(e.target.value)}
+                    id='username' value={userData.username}
+                    placeholder='Username'
+                    autoComplete="off" onChange={e => userData.username = e.target.value}
                 />
             </div>
             <div>
                 <label htmlFor='password'>Password</label>
                 <input type="password"
-                    id='password' value={password}
-                    autoComplete="off" onChange={e => setPassword(e.target.value)}
+                    id='password' value={userData.password}
+                    placeholder='Password'
+                    autoComplete="off" onChange={e => userData.password = e.target.value}
                 />
             </div>
-            <button type="submit">
-                {isLoading ? "Loading..." : "Login"}
-            </button>
+            <button type="submit">{isLoading ? "Loading..." : "Login"}</button>
             <div>
-                {errors?.map((err) => (
-                    <p key={err}>{err}</p>
-                ))}
+                {
+                    userData.errors?.map((err) => (
+                        <p key={err}>{err}</p>
+                    ))
+                }
             </div>
         </form>
     </div>

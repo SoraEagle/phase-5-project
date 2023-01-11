@@ -2,37 +2,20 @@ import React, {useState} from 'react';
 import LoginForm from './LoginForm';
 import UserInput from '../../features/users/UserInput';
 
-function Login({currentUser, onLogin, errors, setErrors, isLoading, setIsLoading}){
+function Login(){
     const [showLogin, setShowLogin] = useState(true);
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
 
     return (
     <div>
         {showLogin ? (
             <div>
-                <LoginForm onLogin={onLogin}
-                    username={username} setUsername={setUsername}
-                    password={password} setPassword={setPassword}
-                    errors={errors} setErrors={setErrors}
-                    isLoading={isLoading} setIsLoading={setIsLoading}
-                />
+                <LoginForm />
                 <p>Don't have an account? &nbsp;</p>
                 <button onClick={() => setShowLogin(false)}>Sign Up</button>
             </div>
         ) : (
             <div>
-                {/* <SignupForm onLogin={onLogin}
-                    username={username} setUsername={setUsername}
-                    password={password} setPassword={setPassword}
-                    errors={errors} setErrors={setErrors}
-                    isLoading={isLoading} setIsLoading={setIsLoading}
-                /> */}
-                <UserInput currentUser={currentUser} onLogin={onLogin} 
-                    username={username} setUsername={setUsername}
-                    password={password} setPassword={setPassword}
-                    errors={errors} setErrors={setErrors}
-                />
+                <UserInput />
                 <p>Already have an account? &nbsp;</p>
                 <button onClick={() => setShowLogin(true)}>Log In</button>
             </div>

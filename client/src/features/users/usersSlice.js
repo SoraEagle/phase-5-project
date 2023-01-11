@@ -15,25 +15,19 @@ export const signup = createAsyncThunk("users/signup", async ({username, passwor
     }).then((data) => data.json())
 });
 
-export const login = createAsyncThunk("users/login", async ({username, password}, thunkAPI) => {
+export const login = createAsyncThunk("users/login", async ({username, password}) => {
     return fetch("/login", {
         method: "POST",
         headers: headers,
-        body: JSON.stringify({username, password})
-    }).then((user) => {
-        user.json().then((user) => {
-            if(user.errors) return thunkAPI.rejectWithValue(user.errors);
-            else return user; // Find a way to set currentUser!!!
-        })
-    })
+        body: JSON.stringify({user: {username, password}})
+    }).then((user) => user.json())
 });
 
-/* export const logout = createAsyncThunk("users/logout", async () => {
+export const logout = createAsyncThunk("users/logout", async () => {
     return fetch("/logout", {
-        method: "DELETE"}).then((r) => {
-            if(r.ok) setCurrentUser(null);
-    });
-}) */
+        method: "DELETE"
+    }).then((user) => user.json())
+});
 
 const usersSlice = createSlice({
     name: "users",
@@ -61,6 +55,20 @@ const usersSlice = createSlice({
             .addCase(fetchUser.fulfilled, (state, action) => {
                 state.status = 'idle';
                 state.entities = action.payload;
+            })
+            .addCase(login.pending, (state) => {
+                state.status = 'loading';
+            })
+            .addCase(login.fulfilled, (state, action) => {
+                state.status = 'idle';
+                if(action.payload.errors){
+                    state.errorMessages = action.payload.errors;
+                    console.log(state.errorMessages);
+                } else{
+                    state.errorMessages = null;
+                    state.entities = action.payload;
+                }
+                console.log(action.payload);
             })
             .addCase(signup.pending, (state) => {
                 state.status = 'loading';

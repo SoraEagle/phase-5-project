@@ -3,18 +3,17 @@ import { signup } from './usersSlice';
 import { useDispatch } from 'react-redux';
 
 // This is basically the Signup form
-function UserInput({onLogin, username, setUsername, password, setPassword, errors, setErrors}){
+function UserInput(){
   const dispatch = useDispatch();
 
   const userData = {
-    username: username,
-    password: password,
+    username: '',
+    password: '',
     errors: null
   }
 
   function handleSubmit(e){
     e.preventDefault();
-    // debugger
     dispatch(signup(userData));
   }
   return (
@@ -29,9 +28,9 @@ function UserInput({onLogin, username, setUsername, password, setPassword, error
         <label>
           Username
           <input type="text" 
-            id='username' name="username" value={username}
+            id='username' name="username" value={userData.username}
             placeholder='Username'
-            onChange={e => setUsername(e.target.value)}
+            onChange={e => userData.username = e.target.value}
           />
         </label>
       </div>
@@ -39,21 +38,19 @@ function UserInput({onLogin, username, setUsername, password, setPassword, error
         <label>
           Password
           <input type="password" 
-            id='password' name="password" value={password}
+            id='password' name="password" value={userData.password}
             placeholder='Password'
-            onChange={e => setPassword(e.target.value)}
+            onChange={e => userData.password = e.target.value}
           />
         </label>
       </div>
-      <div>
         <button type="submit">Create Account</button>
-      </div>
       <div>
                 {
-                  errors ?
-                (errors?.map((err) => (
-                    <p key={err}>{err}</p>
-                  ))) : (setErrors(null))
+                  userData.errors ?
+                    (userData.errors?.map((err) => (
+                      <p key={err}>{err}</p>
+                    ))) : (userData.errors = null)
                 }
             </div>
     </form>
