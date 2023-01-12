@@ -57,6 +57,7 @@ const usersSlice = createSlice({
             .addCase(fetchUser.fulfilled, (state, action) => {
                 state.status = 'idle';
                 state.entities = action.payload;
+                console.log(action.payload);
             })
         // login
             .addCase(login.pending, (state) => {
@@ -90,9 +91,12 @@ const usersSlice = createSlice({
             .addCase(logout.pending, (state) => {
                 state.status = 'loading';
             })
-            .addCase(logout.fulfilled, (state, action) => {
+            .addCase(logout.fulfilled, (state) => {
                 state.status = 'idle';
                 state.entities = {};
+            })
+            .addCase(logout.rejected, () => {
+                console.log("Logout Rejected");
             })
     }
 });

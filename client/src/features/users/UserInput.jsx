@@ -3,12 +3,12 @@ import { signup } from './usersSlice';
 import { useDispatch } from 'react-redux';
 
 // This is basically the Signup form
-function UserInput(){
+function UserInput({username, setUsername, password, setPassword}){
   const dispatch = useDispatch();
 
   const userData = {
-    username: '',
-    password: '',
+    username: username,
+    password: password,
     errors: null
   }
 
@@ -30,7 +30,7 @@ function UserInput(){
           <input type="text" 
             id='username' name="username" value={userData.username}
             placeholder='Username'
-            onChange={e => userData.username = e.target.value}
+            onChange={e => setUsername(e.target.value)}
           />
         </label>
       </div>
@@ -40,7 +40,7 @@ function UserInput(){
           <input type="password" 
             id='password' name="password" value={userData.password}
             placeholder='Password'
-            onChange={e => userData.password = e.target.value}
+            onChange={e => setPassword(e.target.value)}
           />
         </label>
       </div>
