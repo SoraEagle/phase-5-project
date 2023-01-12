@@ -9,19 +9,20 @@ import Login from './components/Authentication/Login';
 import BindersContainer from './features/binders/BindersContainer';
 
 function App(){
-
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.entities);
+  const user = useSelector((state) => state.users.entities);
 
   useEffect(() => { // Auto login
     dispatch(fetchUser());
-  }, []);
+  }, [dispatch]);
 
-  if(!user) return (
-    <Router>
-      <Login />
-    </Router>
-  )
+  if(!user){
+    return (
+      <Router>
+        <Login />
+      </Router>
+    )
+  }
 
   return (
     <Router>

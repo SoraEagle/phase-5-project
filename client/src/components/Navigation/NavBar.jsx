@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../features/users/usersSlice';
 
 function NavBar(){
-  const user = useSelector((state) => state.entities);
+  const user = useSelector((state) => state.users.entities);
   const dispatch = useDispatch();
 
     function handleLogoutClick(){
@@ -11,7 +11,7 @@ function NavBar(){
     }
   return (
     <div id="nav">
-      <div>Hello, {user.username}</div>
+      {/* <div>Hello, {user.username}</div> */}
         <button onClick={handleLogoutClick}>Log Out</button>
     </div>
   )
