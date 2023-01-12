@@ -5,6 +5,7 @@ import { headers } from "../../Globals";
 export const fetchUser = createAsyncThunk("users/fetchUsers", async () => {
     return fetch("/me")
     .then((r) => r.json())
+    .then((data) => data);
 });
 
 export const signup = createAsyncThunk("users/signup", async ({username, password}) => {
@@ -49,6 +50,7 @@ const usersSlice = createSlice({
     },
     extraReducers(builder){
         builder
+        // fetchUser
             .addCase(fetchUser.pending, (state) => {
                 state.status = 'loading';
             })
@@ -56,6 +58,7 @@ const usersSlice = createSlice({
                 state.status = 'idle';
                 state.entities = action.payload;
             })
+        // login
             .addCase(login.pending, (state) => {
                 state.status = 'loading';
             })
@@ -63,13 +66,13 @@ const usersSlice = createSlice({
                 state.status = 'idle';
                 if(action.payload.errors){
                     state.errorMessages = action.payload.errors;
-                    console.log(state.errorMessages);
                 } else{
                     state.errorMessages = null;
                     state.entities = action.payload;
                 }
                 console.log(action.payload);
             })
+        // signup
             .addCase(signup.pending, (state) => {
                 state.status = 'loading';
             })
@@ -82,6 +85,14 @@ const usersSlice = createSlice({
                     state.entities = action.payload;
                 }
                 console.log(action.payload);
+            })
+        // logout
+            .addCase(logout.pending, (state) => {
+                state.status = 'loading';
+            })
+            .addCase(logout.fulfilled, (state, action) => {
+                state.status = 'idle';
+                state.entities = {};
             })
     }
 });
