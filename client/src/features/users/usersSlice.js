@@ -8,7 +8,7 @@ export const fetchUser = createAsyncThunk("users/fetchUsers", async () => {
     .then((data) => data);
 });
 
-export const signup = createAsyncThunk("users/signup", async ({username, password}) => { // users#create
+export const signup = createAsyncThunk("users/signup", async ({username, password}) => {
     return fetch("/signup", {
         method: "POST",
         headers: headers,
@@ -16,11 +16,11 @@ export const signup = createAsyncThunk("users/signup", async ({username, passwor
     }).then((data) => data.json())
 });
 
-export const login = createAsyncThunk("users/login", async ({username, password}) => { // sessions#create
+export const login = createAsyncThunk("users/login", async ({username, password}) => {
     return fetch("/login", {
         method: "POST",
         headers: headers,
-        body: JSON.stringify({user: {username, password}})
+        body: JSON.stringify({username, password})
     }).then((user) => user.json())
 });
 
@@ -50,16 +50,13 @@ const usersSlice = createSlice({
     },
     extraReducers(builder){
         builder
-        // fetchUser
             .addCase(fetchUser.pending, (state) => {
                 state.status = 'loading';
             })
             .addCase(fetchUser.fulfilled, (state, action) => {
                 state.status = 'idle';
                 state.entities = action.payload;
-                // console.log(action.payload);
             })
-        // login
             .addCase(login.pending, (state) => {
                 state.status = 'loading';
             })

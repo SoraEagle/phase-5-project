@@ -29,17 +29,17 @@ function LoginForm({username, setUsername, password, setPassword}){
             <div>
                 <label htmlFor='username'>Username</label>
                 <input type="text"
-                    id='username' value={username}
+                    id='username' value={userData.username}
                     placeholder='Username'
-                    autoComplete="off" onChange={e => {userData.username = e.target.value}}
+                    autoComplete="on" onChange={e => setUsername(e.target.value)}
                 />
             </div>
             <div>
                 <label htmlFor='password'>Password</label>
                 <input type="password"
-                    id='password' value={password}
+                    id='password' value={userData.password}
                     placeholder='Password'
-                    autoComplete="off" onChange={e => {userData.password = e.target.value}}
+                    autoComplete="off" onChange={e => setPassword(e.target.value)}
                 />
             </div>
             <button type="submit">{isLoading ? "Loading..." : "Login"}</button>
