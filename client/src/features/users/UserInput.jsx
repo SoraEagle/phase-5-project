@@ -1,10 +1,11 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { signup } from './usersSlice';
 
 // This is basically the Signup form
 function UserInput({username, setUsername, password, setPassword}){
   const dispatch = useDispatch();
+  const errors = useSelector((state) => state.users.errorMessages);
 
   const userData = {
     username: username,
@@ -47,10 +48,9 @@ function UserInput({username, setUsername, password, setPassword}){
         <button type="submit">Create Account</button>
       <div>
                 {
-                  userData.errors ?
-                    (userData.errors?.map((err) => (
-                      <p key={err}>{err}</p>
-                    ))) : (userData.errors = null)
+                  errors?.map((err) => (
+                    <p key={err}>{err}</p>
+                  ))
                 }
             </div>
     </form>

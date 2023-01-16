@@ -1,9 +1,10 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../features/users/usersSlice';
 
 function LoginForm({username, setUsername, password, setPassword}){
     const dispatch = useDispatch();
+    const errors = useSelector((state) => state.users.errorMessages);
     let isLoading = false;
 
     const userData = {
@@ -15,6 +16,7 @@ function LoginForm({username, setUsername, password, setPassword}){
     function handleSubmit(e){
         e.preventDefault();
         isLoading = true;
+        console.log(userData);
         dispatch(login(userData));
         isLoading = false;
     }
@@ -29,7 +31,7 @@ function LoginForm({username, setUsername, password, setPassword}){
             <div>
                 <label htmlFor='username'>Username</label>
                 <input type="text"
-                    id='username' value={userData.username}
+                    id='username' value={username}
                     placeholder='Username'
                     autoComplete="on" onChange={e => setUsername(e.target.value)}
                 />
@@ -37,7 +39,7 @@ function LoginForm({username, setUsername, password, setPassword}){
             <div>
                 <label htmlFor='password'>Password</label>
                 <input type="password"
-                    id='password' value={userData.password}
+                    id='password' value={password}
                     placeholder='Password'
                     autoComplete="off" onChange={e => setPassword(e.target.value)}
                 />
@@ -45,7 +47,7 @@ function LoginForm({username, setUsername, password, setPassword}){
             <button type="submit">{isLoading ? "Loading..." : "Login"}</button>
             <div>
                 {
-                    userData.errors?.map((err) => (
+                    errors?.map((err) => (
                         <p key={err}>{err}</p>
                     ))
                 }
