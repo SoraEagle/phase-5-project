@@ -16,7 +16,7 @@ function App(){
     dispatch(fetchUser());
   }, [dispatch]);
 
-  if(!user){
+  if(user === null || user.errors){
     return (
       <Router>
         <Login />
@@ -27,7 +27,7 @@ function App(){
   return (
     <Router>
       <div id="App" className="App">
-      {user ? <h1>Logged In!</h1> : null}
+      {(user && !user.errors) ? <h1>Logged In!</h1> : null}
       <NavBar />
       <Routes>
         <Route path={"/"} element={<BindersContainer />} />

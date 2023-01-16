@@ -1,6 +1,6 @@
 import React from 'react';
-import { signup } from './usersSlice';
 import { useDispatch } from 'react-redux';
+import { signup } from './usersSlice';
 
 // This is basically the Signup form
 function UserInput({username, setUsername, password, setPassword}){

@@ -11,7 +11,7 @@ function NavBar(){
     }
   return (
     <div id="nav">
-      {/* <div>Hello, {user.username}</div> */}
+      <div>Hello, {user.username}</div>
         <button onClick={handleLogoutClick}>Log Out</button>
     </div>
   )

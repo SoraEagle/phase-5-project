@@ -8,7 +8,7 @@ export const fetchUser = createAsyncThunk("users/fetchUsers", async () => {
     .then((data) => data);
 });
 
-export const signup = createAsyncThunk("users/signup", async ({username, password}) => {
+export const signup = createAsyncThunk("users/signup", async ({username, password}) => { // users#create
     return fetch("/signup", {
         method: "POST",
         headers: headers,
@@ -16,7 +16,7 @@ export const signup = createAsyncThunk("users/signup", async ({username, passwor
     }).then((data) => data.json())
 });
 
-export const login = createAsyncThunk("users/login", async ({username, password}) => {
+export const login = createAsyncThunk("users/login", async ({username, password}) => { // sessions#create
     return fetch("/login", {
         method: "POST",
         headers: headers,
@@ -27,7 +27,7 @@ export const login = createAsyncThunk("users/login", async ({username, password}
 export const logout = createAsyncThunk("users/logout", async () => {
     return fetch("/logout", {
         method: "DELETE"
-    }).then((user) => user.json())
+    })
 });
 
 const usersSlice = createSlice({
@@ -57,7 +57,7 @@ const usersSlice = createSlice({
             .addCase(fetchUser.fulfilled, (state, action) => {
                 state.status = 'idle';
                 state.entities = action.payload;
-                console.log(action.payload);
+                // console.log(action.payload);
             })
         // login
             .addCase(login.pending, (state) => {
@@ -71,9 +71,8 @@ const usersSlice = createSlice({
                     state.errorMessages = null;
                     state.entities = action.payload;
                 }
-                console.log(action.payload);
+                console.log(action.payload.errors);
             })
-        // signup
             .addCase(signup.pending, (state) => {
                 state.status = 'loading';
             })
@@ -85,18 +84,14 @@ const usersSlice = createSlice({
                     state.errorMessages = null;
                     state.entities = action.payload;
                 }
-                console.log(action.payload);
             })
-        // logout
             .addCase(logout.pending, (state) => {
                 state.status = 'loading';
             })
-            .addCase(logout.fulfilled, (state) => {
+            .addCase(logout.fulfilled, (state, action) => {
                 state.status = 'idle';
-                state.entities = {};
-            })
-            .addCase(logout.rejected, () => {
-                console.log("Logout Rejected");
+                state.entities = null;
+                action.payload = null;
             })
     }
 });
