@@ -20,6 +20,7 @@ function NavBar(){
       {(user  && !user.errors) ? (
         <div>
           <Link id='linkStyles' to="/" >Home</Link>
+          <Link id='linkStyles' to="/binders">My Binders</Link>
           <button onClick={handleLogoutClick}>Log Out</button>
         </div>
       ):(
