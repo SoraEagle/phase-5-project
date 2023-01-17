@@ -21,14 +21,14 @@ function App(){
   return (
     <Router>
       <div id="App" className="App">
-      {(user && !user.errors) ? <h1>Logged In!</h1> : null}
-      <NavBar />
-      <Routes>
-        <Route exact path={"/login"} element={<LoginForm />} />
-        <Route exact path={"/signup"} element={<UserInput />} />
-        <Route exact path={"/"} element={<Home />} />
-        <Route path={"/binders"} element={<BindersContainer />} />
-      </Routes>
+        {(user && !user.errors) ? <h1>Logged In!</h1> : null}
+        <NavBar />
+        <Routes>
+          <Route exact path={"/login"} element={<LoginForm />} />
+          <Route exact path={"/signup"} element={<UserInput />} />
+          <Route exact path={"/"} element={<Home />} />
+          <Route path={"/binders"} element={<BindersContainer />} />
+        </Routes>
         <Footer />
       </div>
     </Router>

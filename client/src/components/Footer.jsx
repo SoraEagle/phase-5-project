@@ -7,7 +7,9 @@ function Footer(){
     }}>
         <p style={{textAlign: "left"}}>
           {/* <a href="#">Top of Page</a> */}
-          </p>
+        </p>
+        <p>@2023 Redux React-or LLC</p>
+        <p>All Rights Reserved</p>
     </footer>
   )
 }
