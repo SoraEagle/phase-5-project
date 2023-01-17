@@ -62,22 +62,19 @@ const usersSlice = createSlice({
             })
             .addCase(login.fulfilled, (state, action) => {
                 state.status = 'idle';
-                if(action.payload.errors){
-                    state.errorMessages = action.payload.errors;
-                } else{
+                if(action.payload.errors) state.errorMessages = action.payload.errors;
+                else{
                     state.errorMessages = null;
                     state.entities = action.payload;
                 }
-                console.log(action.payload.errors);
             })
             .addCase(signup.pending, (state) => {
                 state.status = 'loading';
             })
             .addCase(signup.fulfilled, (state, action) => {
                 state.status = 'idle';
-                if (action.payload.errors){
-                    state.errorMessages = action.payload.errors;
-                } else{
+                if (action.payload.errors) state.errorMessages = action.payload.errors;
+                else{
                     state.errorMessages = null;
                     state.entities = action.payload;
                 }

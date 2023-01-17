@@ -1,11 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { login } from '../../features/users/usersSlice';
 
-function LoginForm({username, setUsername, password, setPassword}){
+function LoginForm(){
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const errors = useSelector((state) => state.users.errorMessages);
-    let isLoading = false;
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
 
     const userData = {
         username: username,
@@ -15,19 +18,17 @@ function LoginForm({username, setUsername, password, setPassword}){
 
     function handleSubmit(e){
         e.preventDefault();
-        isLoading = true;
-        console.log(userData);
         dispatch(login(userData));
-        isLoading = false;
+        if(!userData.errors) navigate('/binders');
     }
   return (
     <div>
-        <section className="heading">
+        <section id='heading' className="heading">
             <h1>
             <p>Log In</p>
             </h1>
         </section>
-        <form onSubmit={handleSubmit}>
+        <form id='login-form' onSubmit={handleSubmit}>
             <div>
                 <label htmlFor='username'>Username</label>
                 <input type="text"
@@ -44,13 +45,11 @@ function LoginForm({username, setUsername, password, setPassword}){
                     autoComplete="off" onChange={e => setPassword(e.target.value)}
                 />
             </div>
-            <button type="submit">{isLoading ? "Loading..." : "Login"}</button>
+            <button type="submit">Login</button>
             <div>
-                {
-                    errors?.map((err) => (
-                        <p key={err}>{err}</p>
-                    ))
-                }
+                {errors?.map((err) => (
+                    <p id='errors' key={err}>{err}</p>
+                ))}
             </div>
         </form>
     </div>
