@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { headers } from "../../Globals";
 
-// Action Creators
 export const fetchUser = createAsyncThunk("users/fetchUser", async () => {
     return fetch("/me")
     .then((r) => r.json())
@@ -33,7 +32,7 @@ export const logout = createAsyncThunk("users/logout", async () => {
 const usersSlice = createSlice({
     name: "users",
     initialState: {
-        entities: null,  // This should be an SINGLE User Object!!!
+        entities: null,
         errorMessages: null,
         status: 'idle',
     },
