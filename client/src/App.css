@@ -27,3 +27,20 @@
 .App-link {
   color: #61dafb;
 }
+
+#linkStyles {
+  display: inline-block;
+  width: "50px";
+  margin: "0px 30px 60px";
+  padding: 20px;
+  text-decoration: "underline";
+  border: "2px solid black";
+};
+
+#text-left {
+  text-align: left;
+}
+
+#form {
+  display: inline-block;
+}
