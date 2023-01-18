@@ -36,19 +36,3 @@
   text-decoration: "underline";
   border: "2px solid black";
 };
-
-#text-left {
-  text-align: left;
-}
-
-#form {
-  display: inline-block;
-}
-
-#binders {
-  display: inline-block;
-}
-
-/* #binders-container {} */
-
-/* #binders-input {} */

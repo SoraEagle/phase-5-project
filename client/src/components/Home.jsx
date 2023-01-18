@@ -7,8 +7,9 @@ function Home(){
             <section id='notice'>
                 <h2>Welcome to Cardlet!</h2>
             </section>
-            <section>
-            <p id='text-left'>The purpose of this site is simple:</p>
+            <section id='home-desc'>
+            <p>The purpose of this site is simple:</p>
+            <p>To help people study!!!  &nbsp;</p>
             </section>
         </div>
     </header>

@@ -23,3 +23,7 @@ code {
   padding-top: 20 px;
   border-top: 2px solid black;
 }
+
+#home-desc {
+  text-align: left;
+}
