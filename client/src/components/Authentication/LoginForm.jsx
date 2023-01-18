@@ -49,7 +49,8 @@ function LoginForm(){
             <div>
                 {errors?.map((err) => (
                     <p id='errors' key={err}>{err}</p>
-                ))}
+                    ))
+                }
             </div>
         </form>
     </div>
