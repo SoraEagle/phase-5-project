@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { headers } from "../../Globals";
 
 // Action Creators
-export const fetchUser = createAsyncThunk("users/fetchUsers", async () => {
+export const fetchUser = createAsyncThunk("users/fetchUser", async () => {
     return fetch("/me")
     .then((r) => r.json())
     .then((data) => data);
