@@ -14,7 +14,7 @@ function NavBar(){
     }
   return (
     <div id="nav">
-      {user? (
+      {(user && !user.errors) ? (
         <div>Hello, {user.username}</div>
       ) : (null)}
       {(user  && !user.errors) ? (
