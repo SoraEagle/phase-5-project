@@ -1,26 +1,53 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchUser } from '../users/usersSlice';
+import { newBinder } from './bindersSlice';
 
-function BinderInput({onBinderSubmit}){
+function BinderInput(){
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.users.entities);
+  const errors = useSelector((state) => state.binders.errorMessages);
   const [name, setName] = useState("");
 
-  function handleInputChange(e){
-    setName(e.target.value);
+  useEffect(() => { // Auto login
+    dispatch(fetchUser());
+  }, []);
+
+  console.log(user);
+
+  const binder = {
+    name: name,
+    errors: null
   }
+
   function handleSubmit(e){
     e.preventDefault();
-    onBinderSubmit(name);
+    dispatch(newBinder(binder));
   }
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Binder Name
-        <input 
-          type="text" name="name"
-          value={name} onChange={handleInputChange}
-        />
-      </label>
-      <button type="submit">Create Binder</button>
-    </form>
+    <div>
+      <section>
+        <h1>
+          <p>Create a new binder here</p>
+        </h1>
+      </section>
+      <form id='binders-input' onSubmit={handleSubmit}>
+        <label>
+          Binder Name
+          <input 
+            type="text" name="name" value={name} 
+            onChange={e => setName(e.target.value)}
+          />
+        </label>
+        <button type="submit">Create Binder</button>
+        <div>
+          {errors?.map((err) => (
+              <p id='errors' key={err}>{err}</p>
+            ))
+          }
+        </div>
+      </form>
+    </div>
   )
 }
 
