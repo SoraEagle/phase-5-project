@@ -5,22 +5,19 @@ class BindersController < ApplicationController
     end
 
     def create
-        binder = set_user.binders.new(binder_params)
-        if binder_name
-            if binder.save
-                render json: binder, status: :created
-            else
-                render json: {errors: binder.errors.full_messages}, status: :unauthorized
-            end
+        binder = Binder.new(binder_params)
+        # byebug
+        if binder.save
+            render json: binder, status: :created
         else
             render json: {errors: binder.errors.full_messages}, status: :unauthorized
         end
     end
 
     def update
-        binder = set_user.binders.find(params[:id])
-        # Add condition for updating/changing the binder_name text field
-        if binder.update(binder_name: params[:binder_name])
+        # binder = set_user.binders.find(params[:id])
+        # Add condition for updating/changing the name text field
+        if binder.update(name: params[:name])
             render json: binder
         else
             render json: {errors: binder.errors.full_messages}, status: :unauthorized
@@ -28,6 +25,6 @@ class BindersController < ApplicationController
     end
     private
     def binder_params
-        params.require(:binder).permit(:binder_name)
+        params.require(:binder).permit(:name)
     end
 end
