@@ -4,11 +4,11 @@ import Binder from './Binder';
 function Binders({binders}){
   return (
     <div>
-        <h3>My Binders</h3>
+        <h3>Binders</h3>
         <ul>
-            {binders.map((b) => (
-                <Binder key={b.id} binder={b} />
-            ))}
+            {binders.map((b) => {
+                return <Binder key={b.id} binder={b} />
+            })}
         </ul>
     </div>
   );
