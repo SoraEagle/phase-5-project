@@ -21,6 +21,7 @@ function NavBar(){
         <div>
           <Link id='linkStyles' to="/" >Home</Link>
           <Link id='linkStyles' to="/binders">My Binders</Link>
+          <Link id='linkStyles' to="/decks">My Decks</Link> {/* All of the decks */}
           <button onClick={handleLogoutClick}>Log Out</button>
         </div>
       ):(
