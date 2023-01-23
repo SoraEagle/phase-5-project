@@ -1,28 +1,18 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchUser } from '../users/usersSlice';
 import { newBinder } from './bindersSlice';
 
 function BinderInput(){
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.users.entities);
   const errors = useSelector((state) => state.binders.errorMessages);
   const [name, setName] = useState("");
 
-  useEffect(() => { // Auto login
-    dispatch(fetchUser());
-  }, []);
-
-  console.log(user);
-
-  const binder = {
-    name: name,
-    errors: null
-  }
-
   function handleSubmit(e){
     e.preventDefault();
-    dispatch(newBinder(binder));
+    dispatch(newBinder({
+      name: name
+    }));
+    // console.log({binder: {name: name}});
   }
   return (
     <div>
