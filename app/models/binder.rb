@@ -3,7 +3,7 @@ class Binder < ApplicationRecord
     has_many :flashcards, through: :decks
 
     #   Validations
-    validates :binder_name, presence: true, uniqueness: {scope: :user}
+    validates :name, presence: true, length: {minimum: 2}
 
     # What other constraints are needed?
 end
