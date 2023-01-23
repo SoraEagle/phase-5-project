@@ -27,3 +27,12 @@ code {
 #home-desc {
   text-align: left;
 }
+
+#binder-name {
+  padding-top: 20px;
+}
+
+#binder-image {
+  width: 100px;
+  height: 100px;
+}
