@@ -1,16 +1,17 @@
 class BindersController < ApplicationController
     def index
-        binders = set_user.binders
-        render json: binders
+        # binders = set_user.binders
+        render json: Binder.all
     end
 
     def create
         binder = Binder.new(binder_params)
         # byebug
         if binder.save
+            # byebug
             render json: binder, status: :created
         else
-            render json: {errors: binder.errors.full_messages}, status: :unauthorized
+            render json: {errors: binder.errors.full_messages}
         end
     end
 
