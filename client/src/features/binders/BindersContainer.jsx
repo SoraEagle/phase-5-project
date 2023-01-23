@@ -1,10 +1,16 @@
-import React from 'react';
-import { useSelector } from "react-redux";
+import React, {useEffect} from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { fetchBinders } from './bindersSlice';
 import BinderInput from './BinderInput';
 import Binders from './Binders';
 
 function BindersContainer(){
-  const binders = useSelector((state) => state.binders.binders);
+  const dispatch = useDispatch();
+  const binders = useSelector((state) => state.binders.entities);
+
+  useEffect(() => { // Auto login
+    dispatch(fetchBinders());
+  }, [dispatch]);
   return (
     <div>
       <BinderInput />
