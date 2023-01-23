@@ -40,7 +40,7 @@ const bindersSlice = createSlice({
             })
             .addCase(fetchBinders.fulfilled, (state, action) => {
                 state.status = 'idle';
-                console.log(action.payload);
+                state.entities = action.payload;
             })
             .addCase(newBinder.pending, (state) => {
                 state.status = 'loading';
@@ -51,8 +51,6 @@ const bindersSlice = createSlice({
                 else{
                     state.errorMessages = null;
                     state.entities.push(action.payload);
-                    console.log(action.payload);
-                    console.log(state.entities);
                 }
             })
     }
