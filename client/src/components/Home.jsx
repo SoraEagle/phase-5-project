@@ -5,11 +5,11 @@ function Home(){
     <header>
         <div>
             <section id='notice'>
-                <h2>Welcome to Cardlet!</h2>
+                <h2>Welcome to <i>Cardlet!</i></h2>
             </section>
             <section id='home-desc'>
-            <p>The purpose of this site is simple:</p>
-            <p>To help people study!!!  &nbsp;</p>
+            <p>The purpose of this site is a simple one:</p>
+            <p>To help people <b><i>study</i></b>!!!  &nbsp;</p>
             </section>
         </div>
     </header>
