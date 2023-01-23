@@ -1,31 +1,37 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { headers } from "../../Globals";
 
-// Action Creators
 export const fetchBinders = createAsyncThunk("binders/fetchBinders", async () => {
     return fetch("/binders")
     .then((r) => r.json())
     .then((data) => data);
 });
-export const newBinder = createAsyncThunk("binders/newBinder", async (newBinder) => {
-    return fetch(`/binders`, {
+
+export const newBinder = createAsyncThunk("binders/newBinder", async (binder) => {
+    return fetch("/binders", {
         method: "POST",
         headers: headers,
-        body:JSON.stringify()
-    }).then((binder) => binder.json(newBinder))
+        body:JSON.stringify({binder})
+    }).then((r) => r.json())
 });
+
+// export const updateBinder = createAsyncThunk("binders/updateBinder", async () => {});
 
 const bindersSlice = createSlice({
     name: "binders",
     initialState: {
-        binders: [], // Array of Binders
+        entities: [], // Array of Binders
         errorMessages: null,
         status: "idle",
     },
     reducers: {
         binderAdded(state, action){
-            state.binders.push({name: action.payload});
+            state.entities.push({name: action.payload});
         },
+        // binderRemoved(state, action){ // Is a delete reducer needed?
+        //     const index = state.entities.findIndex((b) => b.id === action.payload);
+        //     state.entities.splice(index, 1);
+        // }
     },
     extraReducers(builder){
         builder
@@ -44,11 +50,13 @@ const bindersSlice = createSlice({
                 if(action.payload.errors) state.errorMessages = action.payload.errors;
                 else{
                     state.errorMessages = null;
+                    state.entities.push(action.payload);
                     console.log(action.payload);
+                    console.log(state.entities);
                 }
             })
     }
 });
 
-export const {binderAdded} = bindersSlice.actions;
+export const { binderAdded } = bindersSlice.actions;
 export default bindersSlice.reducer;
