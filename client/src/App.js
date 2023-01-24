@@ -10,6 +10,7 @@ import BindersContainer from './features/binders/BindersContainer';
 import DecksContainer from './features/decks/DecksContainer';
 import LoginForm from './components/Authentication/LoginForm';
 import UserInput from './features/users/UserInput';
+import Binder from './features/binders/Binder';
 
 function App(){
   const dispatch = useDispatch();
@@ -29,6 +30,7 @@ function App(){
           <Route exact path={"/signup"} element={<UserInput />} />
           <Route exact path={"/"} element={<Home />} />
           <Route path={"/binders"} element={<BindersContainer />} />
+          <Route path={"/binders/:id"} element={<Binder />} />
           <Route path={"/decks"} element={<DecksContainer />} />
         </Routes>
         <Footer />
