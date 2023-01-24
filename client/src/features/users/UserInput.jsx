@@ -19,7 +19,7 @@ function UserInput(){
   function handleSubmit(e){
     e.preventDefault();
     dispatch(signup(userData));
-    if(!userData.errors) navigate('/binders');
+    if(!userData.errors) navigate('/');
   }
   return (
     <div>

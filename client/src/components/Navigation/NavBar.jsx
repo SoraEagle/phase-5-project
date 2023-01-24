@@ -10,7 +10,7 @@ function NavBar(){
 
     function handleLogoutClick(){
       dispatch(logout(user));
-      if(!user) navigate('/')
+      if(!user) navigate('/');
     }
   return (
     <div id="nav">

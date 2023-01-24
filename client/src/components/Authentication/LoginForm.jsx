@@ -19,7 +19,7 @@ function LoginForm(){
     function handleSubmit(e){
         e.preventDefault();
         dispatch(login(userData));
-        if(!userData.errors) navigate('/binders');
+        if(!userData.errors) navigate('/');
     }
   return (
     <div>
