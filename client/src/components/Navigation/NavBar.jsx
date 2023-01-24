@@ -15,16 +15,16 @@ function NavBar(){
   return (
     <div id="nav">
       {(user && !user.errors) ? (
-        <div>Hello, {user.username}</div>
-      ) : (null)}
-      {(user  && !user.errors) ? (
         <div>
-          <Link id='linkStyles' to="/" >Home</Link>
-          <Link id='linkStyles' to="/binders">My Binders</Link>
-          <Link id='linkStyles' to="/decks">My Decks</Link> {/* All of the decks */}
-          <button onClick={handleLogoutClick}>Log Out</button>
+          <div>Hello, {user.username}</div>
+          <div>
+            <Link id='linkStyles' to="/" >Home</Link>
+            <Link id='linkStyles' to="/binders">My Binders</Link>
+            <Link id='linkStyles' to="/decks">My Decks</Link> {/* All of the decks */}
+            <button onClick={handleLogoutClick}>Log Out</button>
+          </div>
         </div>
-      ):(
+      ) : (
         <div>
           <Link id='linkStyles' to='/login'>Login</Link>
           <Link id='linkStyles' to='signup'>Signup</Link>
