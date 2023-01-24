@@ -8,7 +8,7 @@ function BindersContainer(){
   const dispatch = useDispatch();
   const binders = useSelector((state) => state.binders.entities);
 
-  useEffect(() => { // Auto login
+  useEffect(() => {
     dispatch(fetchBinders());
   }, [dispatch]);
   return (
