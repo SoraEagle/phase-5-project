@@ -12,7 +12,6 @@ function BinderInput(){
     dispatch(newBinder({
       name: name
     }));
-    // console.log({binder: {name: name}});
   }
   return (
     <div>
