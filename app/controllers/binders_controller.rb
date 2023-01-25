@@ -6,7 +6,6 @@ class BindersController < ApplicationController
 
     def create
         binder = Binder.new(binder_params)
-        # byebug
         if binder.save
             # byebug
             render json: binder, status: :created

@@ -5,17 +5,10 @@ class DecksController < ApplicationController
     end
 
     def create
-        deck = set_user.decks.new(deck_params)
-        if deck.binder_id
-            if deck.deck_name
-                if deck.save
-                    render json: deck, status: :created
-                else
-                    render json: {errors: deck.errors.full_messages}, status: :unauthorized
-                end
-            else
-                render json: {errors: deck.errors.full_messages}, status: :unauthorized
-            end
+        deck = Deck.new(deck_params)
+        if deck.save
+            # byebug
+            render json: deck, status: :created
         else
             render json: {errors: deck.errors.full_messages}, status: :unauthorized
         end
