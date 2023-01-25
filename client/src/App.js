@@ -7,7 +7,6 @@ import NavBar from './components/Navigation/NavBar';
 import Footer from './components/Footer';
 import Home from './components/Home';
 import BindersContainer from './features/binders/BindersContainer';
-import DecksContainer from './features/decks/DecksContainer';
 import LoginForm from './components/Authentication/LoginForm';
 import UserInput from './features/users/UserInput';
 import Binder from './features/binders/Binder';
@@ -31,7 +30,6 @@ function App(){
           <Route exact path={"/signup"} element={<UserInput />} />
           <Route exact path={"/"} element={<Home />} />
           <Route path={"/binders"} element={<BindersContainer />} />
-          <Route path={"/decks"} element={<DecksContainer />} />
           <Route path={"/binders/:id"} element={<Binder />} />
           <Route path={"/binders/:id/decks/:id"} element={<Deck />} />
         </Routes>
