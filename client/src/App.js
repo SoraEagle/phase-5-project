@@ -11,6 +11,7 @@ import DecksContainer from './features/decks/DecksContainer';
 import LoginForm from './components/Authentication/LoginForm';
 import UserInput from './features/users/UserInput';
 import Binder from './features/binders/Binder';
+import Deck from './features/decks/Deck';
 
 function App(){
   const dispatch = useDispatch();
@@ -30,8 +31,9 @@ function App(){
           <Route exact path={"/signup"} element={<UserInput />} />
           <Route exact path={"/"} element={<Home />} />
           <Route path={"/binders"} element={<BindersContainer />} />
-          <Route path={"/binders/:id"} element={<Binder />} />
           <Route path={"/decks"} element={<DecksContainer />} />
+          <Route path={"/binders/:id"} element={<Binder />} />
+          <Route path={"/binders/:id/decks/:id"} element={<Deck />} />
         </Routes>
         <Footer />
       </div>
