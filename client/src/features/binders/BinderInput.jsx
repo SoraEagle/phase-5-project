@@ -14,16 +14,16 @@ function BinderInput(){
     }));
   }
   return (
-    <div>
+    <div id='binder-input'>
       <section>
         <h1>
           <p>Create a new binder here</p>
         </h1>
       </section>
-      <form id='binders-input' onSubmit={handleSubmit}>
+      <form id='binder-form' onSubmit={handleSubmit}>
         <label>
           Binder Name
-          <input 
+          <input id='binder-input-input'
             type="text" name="name" value={name} 
             onChange={e => setName(e.target.value)}
           />

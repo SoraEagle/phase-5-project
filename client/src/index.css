@@ -28,11 +28,39 @@ code {
   text-align: left;
 }
 
+#binder-form {
+  padding-bottom: 20px;
+}
+
+#binder-input {
+  border-bottom: 2px solid black;
+}
+
+#binder-input-input {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#binder {
+  align-self: center;
+  padding-bottom: 10px;
+  border-top: 2px solid black;
+}
+
+#binder-list {
+  list-style-type: none;
+}
+
 #binder-name {
   padding-top: 20px;
 }
 
 #binder-image {
+  width: 100px;
+  height: 100px;
+}
+
+#deck-image {
   width: 100px;
   height: 100px;
 }
