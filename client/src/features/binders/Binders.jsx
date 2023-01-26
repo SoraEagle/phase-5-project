@@ -5,7 +5,7 @@ function Binders({binders}){
   return (
     <div>
         <h3>Binders</h3>
-        <ul>
+        <ul id='binder-list'>
             {binders.map((b) => {
                 return <BinderLink key={b.id} binder={b} />
             })}
