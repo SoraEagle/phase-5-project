@@ -1,26 +1,42 @@
 import React, {useState} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { newDeck } from './decksSlice';
 
-function DeckInput({onDeckSubmit}){
+function DeckInput({binder}){
+  const dispatch = useDispatch();
+  const errors = useSelector((state) => state.decks.errorMessages);
   const [name, setName] = useState("");
-
-  function handleInputChange(e){
-    setName(e.target.value);
-  }
   function handleSubmit(e){
     e.preventDefault();
-    onDeckSubmit(name);
+    dispatch(newDeck({
+      binder_id: binder.id,
+      name: name
+    }))
+    // Dispatch to bindersslice
   }
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Deck Name
-        <input 
-          type="text" name="name"
-          value={name} onChange={handleInputChange}
-        />
-      </label>
-      <button type="submit">Create Deck</button>
-    </form>
+    <div>
+      <section>
+        <h1>
+          <p>Create a new deck here</p>
+        </h1>
+      </section>
+      <form id='deck-input' onSubmit={handleSubmit}>
+        <label>
+          Deck Name
+          <input 
+            type="text" name="name"
+            value={name} onChange={e => setName(e.target.value)}
+          />
+        </label>
+        <button type="submit">Create Deck</button>
+        <div>
+          {errors?.map((err) => (
+            <p id='errors' key={err}>{err}</p>
+          ))}
+        </div>
+      </form>
+    </div>
   )
 }
 
