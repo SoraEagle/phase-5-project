@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchBinders } from './bindersSlice';
@@ -9,19 +9,20 @@ function Binder(){
     const dispatch = useDispatch();
     const params = useParams();
     const binders = useSelector((state) => state.binders.entities);
+    // const [binder, setBinder] = useState(null);
     
     useEffect(() => {
       dispatch(fetchBinders());
       // Grab the specific Binder object
     }, [dispatch]);
 
-    const myBinder = binders.filter(b => {
-      return (b.id.toString() === params.id);
-    })
-    console.log(myBinder);
+    function checkBinder(binder){
+      return binder.id.toString() === params.id;
+    }
 
-    binders.map((b) => {
-      console.log(b);
+    binders.map((binder) => {
+      binder = binders.find(checkBinder); // Grabs the Binder object the User is viewing
+      console.log(binders.find(checkBinder));
     });
   return (
     <div>
