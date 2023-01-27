@@ -1,6 +1,7 @@
 class BindersController < ApplicationController
     def index
         # binders = set_user.binders
+        # byebug
         render json: Binder.all
     end
 

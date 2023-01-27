@@ -1,13 +1,13 @@
 class DecksController < ApplicationController
     def index
-        decks = set_user.decks
+        # decks = set_user.decks
         render json: decks
     end
 
     def create
         deck = Deck.new(deck_params)
         if deck.save
-            byebug
+            # byebug
             render json: deck, status: :created
         else
             render json: {errors: deck.errors.full_messages}, status: :unauthorized
