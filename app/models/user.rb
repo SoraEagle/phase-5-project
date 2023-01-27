@@ -3,7 +3,7 @@ class User < ApplicationRecord
 
     has_many :flashcards
     has_many :decks, through: :flashcards
-    has_many :binders, through: :decks
+    has_many :binders
 
     # Validations
     validates :username, presence: true, uniqueness: true, length: {minimum: 5}
