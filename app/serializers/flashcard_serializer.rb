@@ -1,5 +1,5 @@
 class FlashcardSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :name
 
   belongs_to :user
   belongs_to :deck
