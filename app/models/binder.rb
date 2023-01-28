@@ -1,4 +1,5 @@
 class Binder < ApplicationRecord
+    belongs_to :user
     has_many :decks
     has_many :flashcards, through: :decks
 
