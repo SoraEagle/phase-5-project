@@ -27,11 +27,7 @@ const bindersSlice = createSlice({
     reducers: {
         binderAdded(state, action){
             state.entities.push({name: action.payload});
-        },
-        // binderRemoved(state, action){ // Is a delete reducer needed?
-        //     const index = state.entities.findIndex((b) => b.id === action.payload);
-        //     state.entities.splice(index, 1);
-        // }
+        }
     },
     extraReducers(builder){
         builder
