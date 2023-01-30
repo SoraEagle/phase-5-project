@@ -6,12 +6,12 @@ function Binders(){
   const binders = useSelector((state) => state.binders.entities);
   return (
     <div>
-        <h3>Binders</h3>
-        <ul id='binder-list'>
-            {binders.map((b) => {
-                return <BinderLink key={b.id} binder={b} />
-            })}
-        </ul>
+      <h3>Binders</h3>
+      <ul id='binder-list'>
+        {binders.map((b) => {
+          return <BinderLink key={b.id} binder={b} />
+        })}
+      </ul>
     </div>
   );
 }
