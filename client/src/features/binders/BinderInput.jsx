@@ -1,17 +1,22 @@
-import React, {useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { newBinder } from './bindersSlice';
 
 function BinderInput(){
   const dispatch = useDispatch();
-  const errors = useSelector((state) => state.binders.errorMessages);
+  const currentUser = useSelector(state => state.users.entities);
+  const errors = useSelector(state => state.binders.errorMessages);
+  const [userID, setUserID] = useState(null);
   const [name, setName] = useState("");
 
   function handleSubmit(e){
     e.preventDefault();
+    setUserID(currentUser.id);
     dispatch(newBinder({
+      user_id: userID,
       name: name
     }));
+    setName("");
   }
   return (
     <div id='binder-input'>
