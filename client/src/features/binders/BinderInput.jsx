@@ -28,7 +28,7 @@ function BinderInput(){
       <form id='binder-form' onSubmit={handleSubmit}>
         <label>
           Binder Name
-          <input id='binder-input-input'
+          <input id='binder-input-name'
             type="text" name="name" value={name} 
             onChange={e => setName(e.target.value)}
           />
@@ -36,7 +36,7 @@ function BinderInput(){
         <button type="submit">Create Binder</button>
         <div>
           {errors?.map((err) => (
-              <p id='errors' key={err}>{err}</p>
+            <p id='errors' key={err}>{err}</p>
             ))
           }
         </div>
