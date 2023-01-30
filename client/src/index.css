@@ -41,7 +41,7 @@ code {
   margin-right: 10px;
 }
 
-#binder {
+#binder-link {
   align-self: center;
   padding-bottom: 10px;
   border-top: 2px solid black;
@@ -60,6 +60,11 @@ code {
   height: 100px;
 }
 
+#deck-link {
+  align-self: center;
+  padding-bottom: 10 px;
+  border-top: 2px solid black;
+}
 #deck-image {
   width: 100px;
   height: 100px;
