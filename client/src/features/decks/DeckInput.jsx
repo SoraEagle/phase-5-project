@@ -1,18 +1,25 @@
 import React, {useState} from 'react';
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { newDeck } from './decksSlice';
 
-function DeckInput({binder}){
+function DeckInput(){
   const dispatch = useDispatch();
+  const params = useParams();
+  const binders = useSelector((state) => state.binders.entities);
   const errors = useSelector((state) => state.decks.errorMessages);
   const [name, setName] = useState("");
+
+  const thisBinder = binders.find(binder => {
+    return  binder.id.toString() === params.id
+  });
+  
   function handleSubmit(e){
     e.preventDefault();
     dispatch(newDeck({
-      binder_id: binder.id,
+      binder_id: thisBinder.id,
       name: name
     }))
-    // Dispatch to bindersslice
   }
   return (
     <div>
