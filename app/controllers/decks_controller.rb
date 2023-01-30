@@ -1,7 +1,6 @@
 class DecksController < ApplicationController
     def index
-        # decks = set_user.decks
-        render json: decks
+        render json: set_user.decks
     end
 
     def create
@@ -16,7 +15,7 @@ class DecksController < ApplicationController
     end
 
     def update
-        deck = set_user.decks.find(params[:id])
+        deck = set_user.decks.find_by(params[:id])
         # Add condition for updating the name text field
         if deck.update(binder_id: params[:binder_id]) || flashcard.update(deck: params[:deck])
             render json: deck

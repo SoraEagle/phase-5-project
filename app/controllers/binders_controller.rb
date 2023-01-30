@@ -1,7 +1,7 @@
 class BindersController < ApplicationController
     def index
         # byebug
-        render json: Binder.all
+        render json: set_user.binders
     end
 
     def create
@@ -14,7 +14,7 @@ class BindersController < ApplicationController
     end
 
     def update
-        # binder = set_user.binders.find(params[:id])
+        # binder = set_user.binders.find_by(params[:id])
         # Add condition for updating/changing the name text field
         if binder.update(name: params[:name])
             render json: binder
