@@ -1,7 +1,9 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import BinderLink from './BinderLInk';
 
-function Binders({binders}){
+function Binders(){
+  const binders = useSelector((state) => state.binders.entities);
   return (
     <div>
         <h3>Binders</h3>
