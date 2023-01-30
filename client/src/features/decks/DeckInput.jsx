@@ -20,6 +20,7 @@ function DeckInput(){
       binder_id: thisBinder.id,
       name: name
     }))
+    setName('');
   }
   return (
     <div>
