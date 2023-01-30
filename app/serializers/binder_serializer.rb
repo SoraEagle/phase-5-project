@@ -1,5 +1,5 @@
 class BinderSerializer < ActiveModel::Serializer
-  attributes :id, :name
+  attributes :id, :name, :decks
 
   belongs_to :user
   has_many :decks
