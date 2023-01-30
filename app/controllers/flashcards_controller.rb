@@ -40,6 +40,6 @@ class FlashcardsController < ApplicationController
 
     private
     def flashcard_params
-        params.require(:flashcard).permit(:id, :user_id, :deck_id, :question, :answer)
+        params.require(:flashcard).permit(:id, :user_id, :deck_id, :question, :answer) # Verify if the user_id is needed from frontend
     end
 end

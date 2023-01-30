@@ -1,14 +1,12 @@
 class BindersController < ApplicationController
     def index
-        # binders = set_user.binders
         # byebug
         render json: Binder.all
     end
 
     def create
-        binder = Binder.new(binder_params)
+        binder = current_user.binders.new(binder_params)
         if binder.save
-            # byebug
             render json: binder, status: :created
         else
             render json: {errors: binder.errors.full_messages}

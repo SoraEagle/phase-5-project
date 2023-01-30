@@ -5,7 +5,8 @@ class DecksController < ApplicationController
     end
 
     def create
-        deck = Deck.new(deck_params)
+        binder = current_user.binders.find_by(id: params[:binder_id])
+        deck = binder.decks.new(deck_params)
         if deck.save
             # byebug
             render json: deck, status: :created
