@@ -19,13 +19,13 @@ function BinderInput(){
     setName("");
   }
   return (
-    <div id='binder-input'>
+    <div>
       <section>
         <h1>
           <p>Create a new binder here</p>
         </h1>
       </section>
-      <form id='binder-form' onSubmit={handleSubmit}>
+      <form id='binder-input' onSubmit={handleSubmit}>
         <label>
           Binder Name
           <input id='binder-input-name'
@@ -37,8 +37,7 @@ function BinderInput(){
         <div>
           {errors?.map((err) => (
             <p id='errors' key={err}>{err}</p>
-            ))
-          }
+          ))}
         </div>
       </form>
     </div>
