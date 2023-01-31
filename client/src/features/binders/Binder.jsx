@@ -11,7 +11,6 @@ function Binder(){
   const theBinder = binders.find(binder => {
     return  binder.id.toString() === params.id;
   });
-  console.log("theBinder: ", theBinder);
   
   return (
     <div>
