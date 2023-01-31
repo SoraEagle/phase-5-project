@@ -7,13 +7,10 @@ function Deck(){
     const binders = useSelector((state) => state.binders.entities);
     const [thisDeck, setThisDeck] = useState(null);
 
-    console.log(params);
-
     useEffect(() => {
       if(binders.length >= 1){
         const thisBinder = binders.find(binder => {return binder.id.toString() === params.binder_id;});
         setThisDeck(thisBinder.decks.find(deck => {return deck.id.toString() === params.id}));
-        console.log(thisDeck);
         return thisDeck;
       }
       return thisDeck;
