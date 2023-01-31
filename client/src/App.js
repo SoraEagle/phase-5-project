@@ -2,6 +2,8 @@ import React, {useEffect} from 'react';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUser } from './features/users/usersSlice';
+import { fetchBinders } from './features/binders/bindersSlice';
+import { fetchDecks } from './features/decks/decksSlice';
 import './App.css';
 import NavBar from './components/Navigation/NavBar';
 import Footer from './components/Footer';
@@ -18,6 +20,8 @@ function App(){
 
   useEffect(() => { // Auto login
     dispatch(fetchUser());
+    dispatch(fetchBinders());
+    dispatch(fetchDecks());
   }, [dispatch]);
 
   return (

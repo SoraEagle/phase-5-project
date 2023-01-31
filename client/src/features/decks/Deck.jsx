@@ -1,19 +1,21 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchDecks } from './decksSlice';
+import { useSelector } from 'react-redux';
 
 function Deck(){
-    const dispatch = useDispatch();
     const params = useParams();
     const decks = useSelector((state) => state.decks.entities);
 
-    useEffect(() => {
-        dispatch(fetchDecks());
-    }, [dispatch]);
+    const thisDeck = decks.find(deck => {
+      return deck.id.toString() === params.id;
+    });
+    console.log(thisDeck);
+    console.log(decks);
   return (
+    // Remember to render the Flashcards
     <div>
-        Deck
+        {/* {thisDeck ? <h3>{thisDeck.name}</h3> : null} */}
+        <ul id='card-list'></ul>
     </div>
   )
 }
