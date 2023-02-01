@@ -16,10 +16,10 @@ function DeckInput(){
   
   function handleSubmit(e){
     e.preventDefault();
-    dispatch(newDeck({
+    dispatch(newDeck({ // Coming from decksSlice
       binder_id: thisBinder.id,
       name: name
-    }))
+    }));
     setName('');
   }
   return (

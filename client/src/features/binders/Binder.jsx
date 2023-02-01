@@ -6,7 +6,7 @@ import DeckInput from '../decks/DeckInput';
 
 function Binder(){
   const params = useParams();
-  const binders = useSelector((state) => state.binders.entities);
+  const binders = useSelector((state) => state.binders.entities); // Coming from bindersSlice
 
   const theBinder = binders.find(binder => {
     return  binder.id.toString() === params.id;
