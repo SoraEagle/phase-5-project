@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { headers } from "../../Globals";
 
-// fetchDecks
 export const fetchDecks = createAsyncThunk("decks/fetchDecks", async () => {
     return fetch("/decks")
     .then((r) => r.json())
@@ -21,16 +20,6 @@ const decksSlice = createSlice({
         entities: [], // Array of Decks
         errorMessages: null,
         status: "idle",
-    },
-    // Reducers
-    reducers: {
-        deckAdded(state, action){
-            return state.decks.push(action.payload);
-        },
-        deckRemoved(state, action){
-            // const index = state.entites.findIndex((d) => d.id === action.payload);
-            // state.entites.splice(index, 1);
-        },
     },
     extraReducers(builder){
         builder
@@ -55,5 +44,4 @@ const decksSlice = createSlice({
     }
 });
 
-export const {deckAdded, deckRemoved} = decksSlice.actions;
 export default decksSlice.reducer;
