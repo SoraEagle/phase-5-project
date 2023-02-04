@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { newDeck } from './decksSlice';
+import { newDeck, deckAdded } from '../binders/bindersSlice';
 
 function DeckInput(){
   const dispatch = useDispatch();
@@ -11,15 +11,18 @@ function DeckInput(){
   const [name, setName] = useState("");
 
   const thisBinder = binders.find(binder => {
-    return  binder.id.toString() === params.id
+    return  binder.id.toString() === params.id;
   });
   
   function handleSubmit(e){
     e.preventDefault();
-    dispatch(newDeck({ // Coming from decksSlice
+    const deck = {
       binder_id: thisBinder.id,
       name: name
-    }));
+    }
+    console.log(deck);
+    // dispatch(newDeck(deck));
+    dispatch(deckAdded(deck));
     setName('');
   }
   return (
