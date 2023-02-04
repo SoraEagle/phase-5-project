@@ -18,7 +18,6 @@ function Binder(){
       {theBinder ? <h3>{theBinder.name}</h3> : null}
       <ul id='deck-list'>
         {theBinder?.decks.map(deck => {
-          console.log(deck);
           return <DeckLink key={deck.id} binder={theBinder} deck={deck} />
         })}
       </ul>
