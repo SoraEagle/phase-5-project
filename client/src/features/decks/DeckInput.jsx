@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { newDeck, deckAdded } from '../binders/bindersSlice';
+import { newDeck } from '../binders/bindersSlice';
 
 function DeckInput(){
   const dispatch = useDispatch();
@@ -21,8 +21,7 @@ function DeckInput(){
       name: name
     }
     console.log(deck);
-    // dispatch(newDeck(deck));
-    dispatch(deckAdded(deck));
+    dispatch(newDeck(deck));
     setName('');
   }
   return (
