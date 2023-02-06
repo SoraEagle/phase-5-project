@@ -13,6 +13,7 @@ export const newDeck = createAsyncThunk("decks/newDeck", async (payload) => {
         body: JSON.stringify(payload)
     }).then((r) => r.json())
 });
+// export const updateDeck = createAsyncThunk("binders/updateDeck", async () => {});
 
 const decksSlice = createSlice({
     name: "decks",
@@ -36,10 +37,6 @@ const decksSlice = createSlice({
             .addCase(newDeck.fulfilled, (state, action) => {
                 state.status = 'idle';
                 if(action.payload.errors) state.errorMessages = action.payload.errors;
-                else{
-                    state.errorMessages = null;
-                    state.entities.push(action.payload);
-                }
             })
     }
 });
