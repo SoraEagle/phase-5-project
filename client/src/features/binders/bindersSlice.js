@@ -1,4 +1,4 @@
-import { createAsyncThunk, createReducer, createSlice, current } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
 import { headers } from "../../Globals";
 
 export const fetchBinders = createAsyncThunk("binders/fetchBinders", async () => {
@@ -45,7 +45,6 @@ const bindersSlice = createSlice({
             .addCase(fetchBinders.fulfilled, (state, action) => {
                 state.status = 'idle';
                 state.entities = action.payload;
-                console.log(action.payload);
             })
             .addCase(newBinder.pending, (state) => {
                 state.status = 'loading';
@@ -63,17 +62,18 @@ const bindersSlice = createSlice({
             })
             .addCase(newDeck.fulfilled, (state, action) => {
                 state.status = 'idle';
-                if(action.payload.errors) state.errorMessages = action.payload.errors;
-                else{
+                const deck = action.payload;
+                const binder = deck.binder;
+                if(action.payload.errors){
+                    console.log(action.payload.errors);
+                    // state.errorMessages = action.payload.errors;
+                } else{
                     state.errorMessages = null;
-                    console.log(action.payload);
-                    const deck = action.payload;
-                    const binder = deck.binder;
-                    
-                    console.log(binder.decks); // Shows that the new Deck object is ALREADY in the Array in the backend...
-                    console.log('before: ', current(state.entities));
-                    // state.entities.push(action.payload);
-                    console.log('after: ', current(state.entities));
+
+                    const thisBinder = state.entities.find(myBinder => {
+                        return myBinder.id === binder.id;
+                    });
+                    thisBinder.decks.push(action.payload);
                 }
             })
     }
