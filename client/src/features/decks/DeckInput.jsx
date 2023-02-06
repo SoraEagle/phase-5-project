@@ -30,7 +30,7 @@ function DeckInput(){
           <p>Create a new deck here</p>
         </h1>
       </section>
-      <form id='deck-input' onSubmit={handleSubmit}>
+      <form id='input-form' onSubmit={handleSubmit}>
         <label>
           Deck Name
           <input id='deck-input-name'

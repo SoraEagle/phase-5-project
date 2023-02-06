@@ -28,12 +28,12 @@ code {
   text-align: left;
 }
 
-#binder-form {
-  padding-bottom: 20px;
+#input-form {
+  border-bottom: 2px solid black;
 }
 
-#binder-input {
-  border-bottom: 2px solid black;
+#binder-form {
+  padding-bottom: 20px;
 }
 
 #binder-input-name {

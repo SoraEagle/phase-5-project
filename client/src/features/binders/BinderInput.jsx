@@ -25,7 +25,7 @@ function BinderInput(){
           <p>Create a new binder here</p>
         </h1>
       </section>
-      <form id='binder-input' onSubmit={handleSubmit}>
+      <form id='input-form' onSubmit={handleSubmit}>
         <label>
           Binder Name
           <input id='binder-input-name'
