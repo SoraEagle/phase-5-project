@@ -29,7 +29,8 @@ code {
 }
 
 #input-form {
-  border-bottom: 2px solid black;
+  display: inline-block;
+  border: 2px solid black;
 }
 
 #binder-form {
