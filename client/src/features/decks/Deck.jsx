@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import FlashcardInput from '../flashcards/FlashcardInput';
 
 function Deck(){
     const params = useParams();
@@ -20,6 +21,7 @@ function Deck(){
   return (
     // Remember to render the Flashcards
     <div>
+      <FlashcardInput />
       <h3>I am a Deck</h3>
         {thisDeck ? <h3>{thisDeck.name}</h3> : null}
         <ul id='card-list'></ul>
