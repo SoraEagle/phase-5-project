@@ -1,11 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { headers } from "../../Globals";
-
-export const fetchDecks = createAsyncThunk("decks/fetchDecks", async () => {
-    return fetch("/decks")
-    .then((r) => r.json())
-    .then((data) => data);
-});
 export const newDeck = createAsyncThunk("decks/newDeck", async (payload) => {
     return fetch(`/decks`, {
         method: "POST",
@@ -24,13 +18,6 @@ const decksSlice = createSlice({
     },
     extraReducers(builder){
         builder
-            .addCase(fetchDecks.pending, (state) => {
-                state.status = 'loading';
-            })
-            .addCase(fetchDecks.fulfilled, (state, action) => {
-                state.status = 'idle';
-                state.entities = action.payload;
-            })
             .addCase(newDeck.pending, (state) => {
                 state.status = 'loading';
             })
