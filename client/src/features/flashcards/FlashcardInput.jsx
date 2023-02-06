@@ -1,24 +1,33 @@
 import React, {useState} from 'react';
+import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { newFlashcard } from './flashcardsSlice';
 
 function FlashcardInput({onFlashcardSubmit}){
-  const [name, setName] = useState("");
+  const [question, setQuestion] = useState("");
+  const [answer, setAnswer] = useState("");
 
-  function handleInputChange(e){
-    setName(e.target.value);
-  }
   function handleSubmit(e){
     e.preventDefault();
-    onFlashcardSubmit(name);
   }
   return (
-    <form onSubmit={handleSubmit}>
+    <form id='input-form' onSubmit={handleSubmit}>
       <label>
-        Name
+        Question
         <input
-          type="text" name="name"
-          value={name} onChange={handleInputChange}
+          type="text" name="question"
+          value={question} onChange={e => setQuestion(e.target.value)}
         />
       </label>
+      <div></div>
+      <label>
+        Answer
+        <input
+          type="text" name="answer"
+          value={answer} onChange={e => setAnswer(e.target.value)}
+        />
+      </label>
+      <div></div>
       <button type="submit">Create Flashcard</button>
     </form>
   )
