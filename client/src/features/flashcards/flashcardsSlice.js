@@ -1,18 +1,22 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { headers } from "../../Globals";
 //  USE FULL CRUD!!!
-export const fetchFlashcards = createAsyncThunk("decks/fetchDecks", async () => {
+export const fetchFlashcards = createAsyncThunk("decks/fetchFlashcards", async () => {
     return fetch("/flashcards")
     .then((r) => r.json())
     .then((data) => data);
 });
-export const newFlashcard = createAsyncThunk("decks/newDeck", async (payload) => {
+export const newFlashcard = createAsyncThunk("decks/newFlashcard", async (payload) => {
     return fetch(`/decks`, {
         method: "POST",
         headers: headers,
         body: JSON.stringify(payload)
     }).then((r) => r.json())
 });
+
+// export const updateFlashcard = createAsyncThunk("decks/updateFlashcard", async () => {});
+
+// Use flashcardRemoved, or create an action creator???
 
 const flashcardsSlice = createSlice({
     name: "flashcards",
