@@ -26,9 +26,6 @@ const flashcardsSlice = createSlice({
         status: "idle",
     },
     reducers: {
-        flashcardAdded(state, action){
-            state.flashcards.push(action.payload);
-        },
         flashcardRemoved(state, action){
             // const index = state.entites.findIndex((f) => f.id === action.payload);
             // state.entites.splice(index, 1);
