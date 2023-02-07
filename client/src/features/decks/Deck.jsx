@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import FlashcardInput from '../flashcards/FlashcardInput';
+import Flashcard from '../flashcards/Flashcard';
 
 function Deck(){
     const params = useParams();
@@ -16,15 +17,18 @@ function Deck(){
       }
       return thisDeck;
     }, [binders, params.binder_id, params.id, thisDeck]);
-
-    console.log(thisDeck);
   return (
-    // Remember to render the Flashcards
     <div>
-      <FlashcardInput />
+      <FlashcardInput thisDeck={thisDeck} />
       <h3>I am a Deck</h3>
         {thisDeck ? <h3>{thisDeck.name}</h3> : null}
-        <ul id='card-list'></ul>
+        <ul id='list'>
+          {thisDeck?.flashcards.length >= 1 ? 
+            (thisDeck?.flashcards.map(flashcard => {
+              return <Flashcard key={flashcard.id} />
+            })
+            ) : (<p id='flashcard'>This deck has no flashcards!</p>)}
+        </ul>
     </div>
   );
 }

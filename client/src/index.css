@@ -24,10 +24,15 @@ code {
   border-top: 2px solid black;
 }
 
+#list {
+  list-style-type: none;
+}
+
 #home-desc {
   text-align: left;
 }
 
+/* Find way to align the text fields and labels... */
 #input-form {
   display: inline-block;
   border: 2px solid black;
@@ -36,26 +41,18 @@ code {
 #binder-form {
   padding-bottom: 20px;
 }
-
 #binder-input-name {
   margin-left: 10px;
   margin-right: 10px;
 }
-
 #binder-link {
   align-self: center;
   padding-bottom: 10px;
   border-top: 2px solid black;
 }
-
-#binder-list {
-  list-style-type: none;
-}
-
 #binder-name {
   padding-top: 20px;
 }
-
 #binder-image {
   width: 100px;
   height: 100px;
@@ -69,4 +66,9 @@ code {
 #deck-image {
   width: 100px;
   height: 100px;
+}
+
+#flashcard {
+  padding-bottom: 10px;
+  border-top: 2px solid black;
 }
