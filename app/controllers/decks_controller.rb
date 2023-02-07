@@ -7,7 +7,6 @@ class DecksController < ApplicationController
         binder = current_user.binders.find_by(id: params[:binder_id])
         deck = binder.decks.new(deck_params)
         if deck.save
-            # byebug
             render json: deck, status: :created
         else
             render json: {errors: deck.errors.full_messages}, status: :unauthorized
