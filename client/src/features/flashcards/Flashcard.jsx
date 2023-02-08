@@ -18,7 +18,6 @@ function Flashcard({flashcard}){
   console.log(flashcards);
   return (
     <div key={flashcard.id} id='flashcard'>
-      {/* Add in the question, answer, deck_id, and the flipcard property */}
       <div id='flashcard-inner'>
         <div key={flashcard.question} id='flashcard-question'>{flashcard.question}</div>
         <div key={flashcard.answer} id='flashcard-answer'>{flashcard.answer}</div>
