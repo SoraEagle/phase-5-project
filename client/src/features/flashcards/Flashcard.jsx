@@ -22,6 +22,8 @@ function Flashcard({flashcard}){
         <div key={flashcard.question} id='flashcard-question'>{flashcard.question}</div>
         <div key={flashcard.answer} id='flashcard-answer'>{flashcard.answer}</div>
       </div>
+      <button id='edit-button'>Edit</button>
+      <button id='delete-button'>Delete Flashcard</button>
     </div>
   )
 }

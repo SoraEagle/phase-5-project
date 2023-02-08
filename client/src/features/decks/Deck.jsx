@@ -21,7 +21,7 @@ function Deck(){
     <div>
       <FlashcardInput thisDeck={thisDeck} />
       <h3>I am a Deck</h3>
-        {thisDeck ? <h3>{thisDeck.name}</h3> : null}
+        {thisDeck ? <h3 id='title'>{thisDeck.name}</h3> : null}
         <ul id='list'>
           {thisDeck?.flashcards.length >= 1 ? 
             (thisDeck?.flashcards.map(flashcard => {

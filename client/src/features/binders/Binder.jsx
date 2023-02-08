@@ -15,7 +15,7 @@ function Binder(){
   return (
     <div>
       <DeckInput />
-      {theBinder ? <h3>{theBinder.name}</h3> : null}
+      {theBinder ? <h3 id='title'>{theBinder.name}</h3> : null}
       <ul id='list'>
         {theBinder?.decks.map(deck => {
           return <DeckLink key={deck.id} binder={theBinder} deck={deck} />
