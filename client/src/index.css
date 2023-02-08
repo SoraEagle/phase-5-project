@@ -16,6 +16,18 @@ code {
   letter-spacing: 2px;
 }
 
+#statement {
+  padding-left: 100px;
+  padding-right: 100px;
+  align-items: center;
+  text-align: left;
+  line-height: 1.8;
+}
+
+#list {
+  list-style-type: none;
+}
+
 #nav {
   border-bottom: 2px solid black;
   margin-bottom: 12px;
@@ -28,16 +40,12 @@ code {
   border-top: 2px solid black;
 }
 
-#list {
-  list-style-type: none;
-}
-
 #home-desc {
   text-align: center;
 }
 #home-paragraph {
-  white-space: nowrap;
-  padding: 100px;
+  padding-left: 100px;
+  padding-right: 100px;
   text-indent: 50px;
   align-items: center;
   text-align: left;
