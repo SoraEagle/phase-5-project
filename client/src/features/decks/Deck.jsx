@@ -25,9 +25,10 @@ function Deck(){
         <ul id='list'>
           {thisDeck?.flashcards.length >= 1 ? 
             (thisDeck?.flashcards.map(flashcard => {
-              return <Flashcard key={flashcard.id} />
+              return <Flashcard key={flashcard.id} flashcard={flashcard} />
             })
-            ) : (<p id='flashcard'>This deck has no flashcards!</p>)}
+            ) : (<p id='flashcard'>This deck has no flashcards!</p>)
+          }
         </ul>
     </div>
   );
