@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+#title {
+  letter-spacing: 2px;
+}
+
 #nav {
   border-bottom: 2px solid black;
   margin-bottom: 12px;
@@ -29,7 +33,15 @@ code {
 }
 
 #home-desc {
+  text-align: center;
+}
+#home-paragraph {
+  white-space: nowrap;
+  padding: 100px;
+  text-indent: 50px;
+  align-items: center;
   text-align: left;
+  line-height: 1.8;
 }
 
 /* Find way to align the text fields and labels... */
@@ -80,7 +92,7 @@ code {
   color: white;
   transform: rotateY(180deg);
 }
-#flashcard:hover #flashcard-inner {
+.flashcard.hover #flashcard-inner {
   transform: rotateY(180deg);
 }
 #flashcard-front, #flashcard-back {
@@ -89,4 +101,9 @@ code {
   height: 100%;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+}
+
+#delete-button {
+  background-color: maroon;
+  color: white;
 }
