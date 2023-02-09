@@ -4,8 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { flashcardRemoved } from './flashcardsSlice';
 
 function Flashcard({flashcard}){
-  const params = useParams();
   const binders = useSelector((state) => state.binders.entities);
+  const dispatch = useDispatch();
+  const params = useParams();
   const thisBinder = binders.find(binder => {
     return  binder.id.toString() === params.binder_id;
   });
@@ -14,16 +15,21 @@ function Flashcard({flashcard}){
   });
   const flashcards = thisDeck?.flashcards;
 
-  // const flashcards = useSelector(state => state.flashcards.flashcards);
   console.log(flashcards);
+
+  function handleDeleteClick(){
+    dispatch(flashcardRemoved());
+  }
   return (
-    <div key={flashcard.id} id='flashcard'>
-      <div id='flashcard-inner'>
-        <div key={flashcard.question} id='flashcard-question'>{flashcard.question}</div>
-        <div key={flashcard.answer} id='flashcard-answer'>{flashcard.answer}</div>
+    <div id='flashcard-frame'>
+      <div key={flashcard.id} id='flashcard'>
+        <div id='flashcard-inner'>
+          <div key={flashcard.question} id='flashcard-front'>{flashcard.question}</div>
+          <div key={flashcard.answer} id='flashcard-back'>{flashcard.answer}</div>
+        </div>
       </div>
       <button id='edit-button'>Edit</button>
-      <button id='delete-button'>Delete Flashcard</button>
+      <button id='delete-button' onClick={handleDeleteClick}>Delete Flashcard</button>
     </div>
   )
 }
