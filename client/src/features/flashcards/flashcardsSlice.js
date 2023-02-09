@@ -30,8 +30,8 @@ const flashcardsSlice = createSlice({
     },
     reducers: {
         flashcardRemoved(state, action){
-            // const index = state.entites.findIndex((f) => f.id === action.payload);
-            // state.entites.splice(index, 1);
+            const index = state.flashcards.findIndex((f) => f.id === action.payload);
+            state.flashcards.splice(index, 1);
         },
     },
     extraReducers(builder){
