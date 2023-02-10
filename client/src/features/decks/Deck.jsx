@@ -27,7 +27,7 @@ function Deck(){
             (thisDeck?.flashcards.map(flashcard => {
               return <Flashcard key={flashcard.id} flashcard={flashcard} />
             })
-            ) : (<p id='flashcard'>This deck has no flashcards!</p>)
+            ) : (<p>This deck has no flashcards!</p>)
           }
         </ul>
     </div>
