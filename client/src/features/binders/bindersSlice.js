@@ -16,15 +16,10 @@ export const newBinder = createAsyncThunk("binders/newBinder", async (binder) =>
     }).then((r) => r.json())
 });
 
-// Add PATCH action creators for Decks and Flashcards
-// export const updateFlashcard = createAsyncThunk("binders/updateFlashcard", async () => {});
-
-// Add DELETE action creators for Decks and Flashcards
-
 const bindersSlice = createSlice({
     name: "binders",
     initialState: {
-        entities: [], // Array of Binders
+        entities: [],
         errorMessages: null,
         status: "idle",
     },
