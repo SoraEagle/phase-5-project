@@ -4,12 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { newFlashcard } from './flashcardsSlice';
 
 function FlashcardInput(){
+  const binders = useSelector(state => state.binders.entities);
+  const currentUser = useSelector(state => state.users.entities);
+  const errors = useSelector(state => state.flashcards.flashcards);
   const dispatch = useDispatch();
   const params = useParams();
-  // const currentUser = useSelector(state => state.users.entities);
-  const binders = useSelector((state) => state.binders.entities);
-  // const [userId, setUserId] = useState(null);
-  // const [deckId, setDeckId] = useState(null);
+  const [userId, setUserId] = useState(null);
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
   
@@ -22,15 +22,16 @@ function FlashcardInput(){
 
   function handleSubmit(e){
     e.preventDefault();
-    // setUserId(currentUser.id);
-    // setDeckId(thisDeck.id);
+    setUserId(currentUser.id);
     const flashcard = {
+      user_id: userId,
       deck_id: thisDeck.id,
       question: question,
       answer: answer
     }
     console.log(flashcard);
     dispatch(newFlashcard(flashcard));
+    console.log(flashcard);
     setQuestion('');
     setAnswer('');
   }
@@ -53,6 +54,11 @@ function FlashcardInput(){
       </label>
       <div></div>
       <button type="submit">Create Flashcard</button>
+      <div>
+        {errors?.map((err) => (
+          <p id='errors' key={err}>{err}</p>
+        ))}
+      </div>
     </form>
   )
 }
