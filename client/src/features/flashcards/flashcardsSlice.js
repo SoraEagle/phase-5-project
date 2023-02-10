@@ -19,19 +19,17 @@ export const newFlashcard = createAsyncThunk("flashcards/newFlashcard", async (p
 
 // export const updateFlashcard = createAsyncThunk("flashcards/updateFlashcard", async () => {});
 
-// Use flashcardRemoved, or create an action creator???
-
 const flashcardsSlice = createSlice({
     name: "flashcards",
     initialState: {
-        flashcards: [], // Array of Flashcards
+        entities: [],
         errorMessages: null,
         status: "idle",
     },
     reducers: {
         flashcardRemoved(state, action){
-            const index = state.flashcards.findIndex((f) => f.id === action.payload);
-            state.flashcards.splice(index, 1);
+            const index = state.entities.findIndex((f) => f.id === action.payload);
+            state.entities.splice(index, 1);
         },
     },
     extraReducers(builder){
@@ -41,10 +39,13 @@ const flashcardsSlice = createSlice({
             })
             .addCase(fetchFlashcards.fulfilled, (state, action) => {
                 state.status = 'idle';
-                state.flashcards = action.payload;
+                if(action.payload.errors) {
+                    state.errorMessages = action.payload.errors;
+                    console.log(action.payload.errors);
+                }
             })
     }
 });
 
-export const {flashcardAdded, flashcardRemoved} = flashcardsSlice.actions;
+export const {flashcardRemoved} = flashcardsSlice.actions;
 export default flashcardsSlice.reducer;
