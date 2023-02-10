@@ -10,13 +10,13 @@ function Deck(){
     const [thisDeck, setThisDeck] = useState(null);
 
     useEffect(() => {
-      if(binders.length >= 1){
+      if(binders.length > 0){
         const thisBinder = binders.find(binder => {return binder.id.toString() === params.binder_id;});
         setThisDeck(thisBinder.decks.find(deck => {return deck.id.toString() === params.id}));
         return thisDeck;
       }
       return thisDeck;
-    }, [binders, params.binder_id, params.id, thisDeck]);
+    }, [binders, params.binder_id, params.id]);
   return (
     <div>
       <FlashcardInput thisDeck={thisDeck} />
