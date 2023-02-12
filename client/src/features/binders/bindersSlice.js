@@ -23,6 +23,7 @@ const bindersSlice = createSlice({
         errorMessages: null,
         status: "idle",
     },
+    reducers: {},
     extraReducers(builder){
         builder
             .addCase(fetchBinders.pending, (state) => {
