@@ -6,7 +6,7 @@ import { login } from '../../features/users/usersSlice';
 function LoginForm(){
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const errors = useSelector((state) => state.users.errorMessages);
+    const errors = useSelector(state => state.users.errorMessages);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
@@ -23,27 +23,25 @@ function LoginForm(){
     }
   return (
     <div>
-        <section id='heading' className="heading">
-            <h1>
-            <p>Log In</p>
-            </h1>
+        <section className="heading">
+            <h1>Log In</h1>
         </section>
         <form id='login-form' onSubmit={handleSubmit}>
             <div>
-                <label htmlFor='username'>Username</label>
-                <input type="text"
-                    id='username' value={username}
-                    placeholder='Username'
-                    autoComplete="on" onChange={e => setUsername(e.target.value)}
-                />
+                <label>Username
+                    <input type="text"
+                        id='username' value={username} placeholder='Username'
+                        autoComplete="on" onChange={e => setUsername(e.target.value)}
+                    />
+                </label>
             </div>
             <div>
-                <label htmlFor='password'>Password</label>
-                <input type="password"
-                    id='password' value={password}
-                    placeholder='Password'
-                    autoComplete="off" onChange={e => setPassword(e.target.value)}
-                />
+                <label>Password
+                    <input type="password"
+                        id='password' value={password} placeholder='Password'
+                        autoComplete="off" onChange={e => setPassword(e.target.value)}
+                    />
+                </label>
             </div>
             <button type="submit">Login</button>
             <div>

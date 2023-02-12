@@ -24,28 +24,22 @@ function UserInput(){
   return (
     <div>
       <section className="heading">
-        <h1>
-          <p>Please create an account</p>
-        </h1>
+        <h1>Please create an account</h1>
       </section>
       <form id='signup-form' onSubmit={handleSubmit}>
         <div>
-          <label>
-            Username
+          <label>Username
             <input type="text" 
-              id='username' name="username" value={userData.username}
-              placeholder='Username'
-              onChange={e => setUsername(e.target.value)}
+              id='username' value={userData.username} placeholder='Username'
+              autoComplete="on" onChange={e => setUsername(e.target.value)}
             />
           </label>
         </div>
         <div>
-          <label>
-            Password
+          <label>Password
             <input type="password" 
-              id='password' name="password" value={userData.password}
-              placeholder='Password'
-              onChange={e => setPassword(e.target.value)}
+              id='password' value={userData.password} placeholder='Password'
+              autoComplete='off' onChange={e => setPassword(e.target.value)}
             />
           </label>
         </div>
