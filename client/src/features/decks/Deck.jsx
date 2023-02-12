@@ -17,6 +17,7 @@ function Deck(){
       }
       return thisDeck;
     }, [binders, params.binder_id, params.id]);
+    console.log(thisDeck);
   return (
     <div>
       <FlashcardInput thisDeck={thisDeck} />
@@ -24,8 +25,8 @@ function Deck(){
         {thisDeck ? <h3 id='title'>{thisDeck.name}</h3> : null}
         <ul id='list'>
           {thisDeck?.flashcards.length >= 1 ? 
-            (thisDeck?.flashcards.map(flashcard => {
-              return <Flashcard key={flashcard.id} flashcard={flashcard} />
+            (thisDeck?.flashcards.map(f => {
+              return <Flashcard key={f.id} flashcard={f} />
             })
             ) : (<p>This deck has no flashcards!</p>)
           }
