@@ -11,16 +11,6 @@ class BindersController < ApplicationController
             render json: {errors: binder.errors.full_messages}
         end
     end
-
-    def update
-        # binder = set_user.binders.find_by(params[:id])
-        # Add condition for updating/changing the name text field
-        if binder.update(name: params[:name])
-            render json: binder
-        else
-            render json: {errors: binder.errors.full_messages}, status: :unauthorized
-        end
-    end
     private
     def binder_params
         params.require(:binder).permit(:name)
