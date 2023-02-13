@@ -3,7 +3,6 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUser } from './features/users/usersSlice';
 import { fetchBinders } from './features/binders/bindersSlice';
-// import { fetchDecks } from './features/decks/decksSlice';
 import './App.css';
 import NavBar from './components/Navigation/NavBar';
 import Footer from './components/Footer';
@@ -18,10 +17,9 @@ function App(){
   const dispatch = useDispatch();
   const user = useSelector((state) => state.users.entities);
 
-  useEffect(() => { // Auto login
+  useEffect(() => {
     dispatch(fetchUser());
     dispatch(fetchBinders());
-    // dispatch(fetchDecks());
   }, [dispatch]);
 
   return (
@@ -36,6 +34,8 @@ function App(){
           <Route path={"/binders"} element={<BindersContainer />} />
           <Route path={"/binders/:id"} element={<Binder />} />
           <Route path={"/binders/:binder_id/decks/:id"} element={<Deck />} />
+          {/* Create an Route to an page showing all (but the User's) Flashcards, to browse and copy */}
+          {/* <Route> path={"/flashcards"} element={} </Route> */}
         </Routes>
         <Footer />
       </div>

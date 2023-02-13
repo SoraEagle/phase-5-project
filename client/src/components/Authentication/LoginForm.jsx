@@ -1,11 +1,10 @@
 import React, {useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { redirect } from 'react-router-dom';
 import { login } from '../../features/users/usersSlice';
 
 function LoginForm(){
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const errors = useSelector(state => state.users.errorMessages);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -19,7 +18,7 @@ function LoginForm(){
     function handleSubmit(e){
         e.preventDefault();
         dispatch(login(userData));
-        if(!userData.errors) navigate('/');
+        if(!userData.errors) return redirect('/');
     }
   return (
     <div>
@@ -28,7 +27,7 @@ function LoginForm(){
         </section>
         <form id='login-form' onSubmit={handleSubmit}>
             <div>
-                <label>Username
+                <label htmlFor='username'>Username
                     <input type="text"
                         id='username' value={username} placeholder='Username'
                         autoComplete="on" onChange={e => setUsername(e.target.value)}
@@ -36,7 +35,7 @@ function LoginForm(){
                 </label>
             </div>
             <div>
-                <label>Password
+                <label htmlFor='password'>Password
                     <input type="password"
                         id='password' value={password} placeholder='Password'
                         autoComplete="off" onChange={e => setPassword(e.target.value)}

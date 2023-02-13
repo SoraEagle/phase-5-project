@@ -1,11 +1,10 @@
 import React, {useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { redirect } from 'react-router-dom';
 import { signup } from './usersSlice';
 
 function UserInput(){
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const errors = useSelector((state) => state.users.errorMessages);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -19,7 +18,7 @@ function UserInput(){
   function handleSubmit(e){
     e.preventDefault();
     dispatch(signup(userData));
-    if(!userData.errors) navigate('/');
+    if(!userData.errors) redirect('/');
   }
   return (
     <div>
