@@ -17,7 +17,19 @@ export const newFlashcard = createAsyncThunk("flashcards/newFlashcard", async (p
     }).then((r) => r.json())
 });
 
-// export const updateFlashcard = createAsyncThunk("flashcards/updateFlashcard", async () => {});
+export const updateFlashcard = createAsyncThunk("flashcards/updateFlashcard", async (payload) => {
+    return fetch(`/flashcards/${payload.id}`, {
+        method: "PATCH",
+        headers: headers,
+        body: JSON.stringify(payload)
+    }).then((r) => r.json())
+});
+
+export const removeFlashcard = createAsyncThunk("flashcards/removeFlashcard", async (payload) => {
+    return fetch (`/flashcards/${payload.id}`, {
+        method: "DELETE"
+    }).then((r) => r.json())
+})
 
 const flashcardsSlice = createSlice({
     name: "flashcards",
@@ -27,10 +39,10 @@ const flashcardsSlice = createSlice({
         status: "idle",
     },
     reducers: {
-        flashcardRemoved(state, action){
-            const index = state.entities.findIndex((f) => f.id === action.payload);
-            state.entities.splice(index, 1);
-        },
+        // flashcardRemoved(state, action){
+        //     const index = state.entities.findIndex(f => f.id === action.payload);
+        //     state.entities.splice(index, 1);
+        // },
     },
     extraReducers(builder){
         builder
@@ -44,8 +56,26 @@ const flashcardsSlice = createSlice({
                     console.log(action.payload.errors);
                 }
             })
+            .addCase(newFlashcard.fulfilled, (state, action) => {
+                state.status = 'idle';
+                if(action.payload.errors) state.errorMessages = action.payload.errors;
+            })
+            .addCase(updateFlashcard.fulfilled, (state, action) => {
+                state.status = 'idle';
+                if(action.payload.errors) state.errorMessages = action.payload.errors;
+            })
+            .addCase(removeFlashcard.fulfilled, (state, action) => {
+                state.status = 'idle';
+                console.log(action.payload);
+                const deck = action.payload.deck;
+                let flashcards = deck.flashcards;
+                console.log(flashcards);
+
+                const updatedFlashcards = flashcards.filter(flashcard => flashcard.id !== action.payload.id);
+                flashcards = updatedFlashcards;
+            })
     }
 });
 
-export const {flashcardRemoved} = flashcardsSlice.actions;
+// export const {flashcardRemoved} = flashcardsSlice.actions;
 export default flashcardsSlice.reducer;
