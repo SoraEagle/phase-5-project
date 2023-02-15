@@ -8,6 +8,7 @@ import NavBar from './components/Navigation/NavBar';
 import Footer from './components/Footer';
 import Home from './components/Home';
 import BindersContainer from './features/binders/BindersContainer';
+import Flashcards from './features/flashcards/Flashcards';
 import LoginForm from './components/Authentication/LoginForm';
 import UserInput from './features/users/UserInput';
 import Binder from './features/binders/Binder';
@@ -15,7 +16,7 @@ import Deck from './features/decks/Deck';
 
 function App(){
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.users.entities);
+  const user = useSelector(state => state.users.entities);
 
   useEffect(() => {
     dispatch(fetchUser());
@@ -34,8 +35,7 @@ function App(){
           <Route path={"/binders"} element={<BindersContainer />} />
           <Route path={"/binders/:id"} element={<Binder />} />
           <Route path={"/binders/:binder_id/decks/:id"} element={<Deck />} />
-          {/* Create an Route to an page showing all (but the User's) Flashcards, to browse and copy */}
-          {/* <Route> path={"/flashcards"} element={} </Route> */}
+          <Route path={"/flashcards"} element={<Flashcards />} />
         </Routes>
         <Footer />
       </div>
