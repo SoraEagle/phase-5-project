@@ -22,7 +22,7 @@ function Deck(){
       <FlashcardInput thisDeck={thisDeck} />
       <h3>I am a Deck</h3>
         {thisDeck ? <h3 id='title'>{thisDeck.name}</h3> : null}
-        <ul id='list'>
+        <ul id='list' className='flex-container'>
           {thisDeck?.flashcards.length >= 1 ? 
             (thisDeck?.flashcards.map(f => {
               return <Flashcard key={f.id} flashcard={f} />
