@@ -6,7 +6,7 @@ import Flashcard from '../flashcards/Flashcard';
 
 function Deck(){
     const params = useParams();
-    const binders = useSelector((state) => state.binders.entities);
+    const binders = useSelector(state => state.binders.entities);
     const [thisDeck, setThisDeck] = useState(null);
 
     useEffect(() => {
@@ -17,7 +17,6 @@ function Deck(){
       }
       return thisDeck;
     }, [binders, params.binder_id, params.id]);
-    console.log(thisDeck);
   return (
     <div>
       <FlashcardInput thisDeck={thisDeck} />

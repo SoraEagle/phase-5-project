@@ -3,12 +3,12 @@ import { useSelector } from 'react-redux';
 import BinderLink from './BinderLInk';
 
 function Binders(){
-  const binders = useSelector((state) => state.binders.entities);
+  const binders = useSelector(state => state.binders.entities);
   return (
     <div>
       <h3>Binders</h3>
       <ul id='list'>
-        {binders.map((b) => {
+        {binders?.map((b) => {
           return <BinderLink key={b.id} binder={b} />
         })}
       </ul>

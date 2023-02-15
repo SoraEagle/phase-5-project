@@ -6,8 +6,8 @@ import { newDeck } from './decksSlice';
 function DeckInput(){
   const dispatch = useDispatch();
   const params = useParams();
-  const binders = useSelector((state) => state.binders.entities);
-  const errors = useSelector((state) => state.decks.errorMessages);
+  const binders = useSelector(state => state.binders.entities);
+  const errors = useSelector(state => state.decks.errorMessages);
   const [name, setName] = useState("");
 
   const thisBinder = binders.find(binder => {
