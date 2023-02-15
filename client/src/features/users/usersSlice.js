@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { newFlashcard } from "../flashcards/flashcardsSlice";
 import { headers } from "../../Globals";
 
 export const fetchUser = createAsyncThunk("users/fetchUser", async () => {
@@ -16,7 +15,7 @@ export const signup = createAsyncThunk("users/signup", async ({username, passwor
     }).then((data) => data.json())
 });
 
-export const login = createAsyncThunk("users/login", async ({username, password}, {rejectWithValue}) => {
+export const login = createAsyncThunk("users/login", async ({username, password}) => {
     return fetch("/login", {
         method: "POST",
         headers: headers,
@@ -69,21 +68,6 @@ const usersSlice = createSlice({
                 state.errorMessages = null;
                 state.entities = null;
                 action.payload = null;
-            })
-            .addCase(newFlashcard.fulfilled, (state, action) => {
-                state.status = 'idle';
-                const flashcard = action.payload;
-                const deck = flashcard.deck;
-                console.log(deck);
-                if(!action.payload.errors){
-                    state.errorMessages = null;
-                    console.log(deck.flashcards);
-
-                    const thisDeck = state.entities.find(myDeck => {
-                        return myDeck.id === deck.id;
-                    });
-                    thisDeck?.flashcards.push(action.payload);
-                }
             })
     }
 });
