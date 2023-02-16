@@ -34,7 +34,6 @@ const usersSlice = createSlice({
     initialState: {
         entities: null,
         errorMessages: null,
-        status: 'idle',
     },
     reducers: {
         reset(state){
@@ -44,11 +43,9 @@ const usersSlice = createSlice({
     extraReducers(builder){
         builder
             .addCase(fetchUser.fulfilled, (state, action) => {
-                state.status = 'idle';
                 state.entities = action.payload;
             })
             .addCase(login.fulfilled, (state, action) => {
-                state.status = 'idle';
                 if(action.payload.errors) state.errorMessages = action.payload.errors;
                 else{
                     state.entities = action.payload;
@@ -56,7 +53,6 @@ const usersSlice = createSlice({
                 }
             })
             .addCase(signup.fulfilled, (state, action) => {
-                state.status = 'idle';
                 if (action.payload.errors) state.errorMessages = action.payload.errors;
                 else{
                     state.errorMessages = null;
@@ -64,7 +60,6 @@ const usersSlice = createSlice({
                 }
             })
             .addCase(logout.fulfilled, (state, action) => {
-                state.status = 'idle';
                 state.errorMessages = null;
                 state.entities = null;
                 action.payload = null;

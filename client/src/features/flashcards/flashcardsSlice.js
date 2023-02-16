@@ -34,31 +34,20 @@ const flashcardsSlice = createSlice({
     initialState: {
         entities: [],
         errorMessages: null,
-        status: "idle", // Used to check if an action creator is running
     },
     reducers: {},
     extraReducers(builder){
         builder
-            .addCase(fetchFlashcards.pending, (state) => {
-                state.status = 'pending';
-            })
             .addCase(fetchFlashcards.fulfilled, (state, action) => {
-                state.status = 'idle';
                 if(action.payload.errors){
                     state.errorMessages = action.payload.errors;
                 }
             })
             .addCase(newFlashcard.fulfilled, (state, action) => {
-                state.status = 'idle';
                 if(action.payload.errors) state.errorMessages = action.payload.errors;
             })
             .addCase(updateFlashcard.fulfilled, (state, action) => {
-                state.status = 'idle';
-                console.log(action.payload);
                 if(action.payload.errors) state.errorMessages = action.payload.errors;
-            })
-            .addCase(removeFlashcard.pending, (state) => {
-                state.status = 'pending';
             })
     }
 });

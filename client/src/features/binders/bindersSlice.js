@@ -22,7 +22,6 @@ const bindersSlice = createSlice({
     initialState: {
         entities: [],
         errorMessages: null,
-        status: "idle",
     },
     reducers: {
         flashcardRemoved(state, action){
@@ -48,15 +47,10 @@ const bindersSlice = createSlice({
     },
     extraReducers(builder){
         builder
-            .addCase(fetchBinders.pending, (state) => {
-                state.status = 'loading';
-            })
             .addCase(fetchBinders.fulfilled, (state, action) => {
-                state.status = 'idle';
                 state.entities = action.payload;
             })
             .addCase(newBinder.fulfilled, (state, action) => {
-                state.status = "idle";
                 if(action.payload.errors) state.errorMessages = action.payload.errors;
                 else{
                     state.errorMessages = null;
@@ -64,7 +58,6 @@ const bindersSlice = createSlice({
                 }
             })
             .addCase(newDeck.fulfilled, (state, action) => {
-                state.status = 'idle';
                 const deck = action.payload;
                 const binder = deck.binder;
                 if(!action.payload.errors){
@@ -77,8 +70,6 @@ const bindersSlice = createSlice({
                 }
             })
             .addCase(newFlashcard.fulfilled, (state, action) => {
-                state.status = 'idle';
-
                 if(!action.payload.errors){
                     state.errorMessages = null;
 
@@ -93,8 +84,6 @@ const bindersSlice = createSlice({
                 
             })
             .addCase(updateFlashcard.fulfilled, (state, action) => {
-                state.status = 'idle';
-
                 if(!action.payload.errors){
                     const updatedBinders = state.entities.map(binder => {
                         if(binder.id === action.payload.deck?.binder_id){
@@ -121,8 +110,6 @@ const bindersSlice = createSlice({
                 }
             })
             .addCase(removeFlashcard.fulfilled, (state, action) => {
-                state.status = 'idle';
-
                 if(!action.payload.errors){
                     state.errorMessages = null;
                 }

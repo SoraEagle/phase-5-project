@@ -14,12 +14,10 @@ const decksSlice = createSlice({
     initialState: {
         entities: [],
         errorMessages: null,
-        status: "idle", // Used to check if an action creator is running
     },
     extraReducers(builder){
         builder
             .addCase(newDeck.fulfilled, (state, action) => {
-                state.status = 'idle';
                 if(action.payload.errors) state.errorMessages = action.payload.errors;
             })
     }
