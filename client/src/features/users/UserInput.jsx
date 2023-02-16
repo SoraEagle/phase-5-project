@@ -10,7 +10,6 @@ function UserInput(){
   const errors = useSelector(state => state.users.errorMessages);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
   const userData = {
     username: username,
     password: password,
@@ -20,12 +19,12 @@ function UserInput(){
   function handleSubmit(e){
     e.preventDefault();
     dispatch(signup(userData));
-    if(user && !userData.errors)  navigate('/');
+    if(user && !user.errors) navigate('/');
     setUsername('');
     setPassword('');
   }
   return (
-    <div>
+    <div id='signup'>
       <section className="heading">
         <h1>Please create an account</h1>
       </section>

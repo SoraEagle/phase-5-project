@@ -10,7 +10,6 @@ function LoginForm(){
     const errors = useSelector(state => state.users.errorMessages);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-
     const userData = {
         username: username,
         password: password,
@@ -20,16 +19,12 @@ function LoginForm(){
     function handleSubmit(e){
         e.preventDefault();
         dispatch(login(userData));
-        if(user && !userData.errors){
-            console.log(user);
-            navigate('/');
-            console.log("Logged in");
-        }
+        if(user && !user.errors) navigate('/');
         setUsername('');
         setPassword('');
     }
   return (
-    <div>
+    <div id='login'>
         <section className="heading">
             <h1>Log In</h1>
         </section>
