@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { fetchUser } from './features/users/usersSlice';
 import { fetchBinders } from './features/binders/bindersSlice';
 import './App.css';
@@ -16,7 +16,6 @@ import Deck from './features/decks/Deck';
 
 function App(){
   const dispatch = useDispatch();
-  const user = useSelector(state => state.users.entities);
 
   useEffect(() => {
     dispatch(fetchUser());
@@ -26,7 +25,6 @@ function App(){
   return (
     <Router>
       <div id="App" className="App">
-        {(user && !user.errors) ? <h1>Logged In!</h1> : null}
         <NavBar />
         <Routes>
           <Route exact path={"/login"} element={<LoginForm />} />

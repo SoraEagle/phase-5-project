@@ -8,7 +8,7 @@ function Flashcard({flashcard}){ // The variable "flashcard" drilled down from D
   const dispatch = useDispatch();
   const binders = useSelector(state => state.binders.entities);
 
-  binders.find(myBinder => {
+  binders?.find(myBinder => {
     const thisDeck = myBinder.decks?.find(myDeck => {
       return myDeck.id === flashcard.deck_id
     });
