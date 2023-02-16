@@ -9,7 +9,7 @@ class UsersController < ApplicationController
         user = User.new(user_params)
         if user.save
             session[:user_id] = user.id
-            render json: user
+            render json: user, status: :created
         else
             render json: {errors: user.errors.full_messages}, status: :unauthorized
         end
@@ -17,6 +17,6 @@ class UsersController < ApplicationController
     
     private
     def user_params
-        params.require(:user).permit(:username, :password)
+        params.permit(:username, :password)
     end
 end
