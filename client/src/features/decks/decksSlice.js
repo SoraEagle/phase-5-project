@@ -14,7 +14,7 @@ const decksSlice = createSlice({
     initialState: {
         entities: [],
         errorMessages: null,
-        status: "idle",
+        status: "idle", // Used to check if an action creator is running
     },
     extraReducers(builder){
         builder
