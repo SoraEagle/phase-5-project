@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../../features/users/usersSlice';
@@ -16,12 +16,17 @@ function LoginForm(){
         errors: null
     }
 
+    useEffect(() => {
+        if(user && !user.errors){
+            navigate('/');
+            setUsername('');
+            setPassword('');
+        }
+    }, [user, navigate]);
+
     function handleSubmit(e){
         e.preventDefault();
         dispatch(login(userData));
-        if(user && !user.errors) navigate('/');
-        setUsername('');
-        setPassword('');
     }
   return (
     <div id='login'>
