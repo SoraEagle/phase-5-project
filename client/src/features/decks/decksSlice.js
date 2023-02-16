@@ -18,9 +18,6 @@ const decksSlice = createSlice({
     },
     extraReducers(builder){
         builder
-            .addCase(newDeck.pending, (state) => {
-                state.status = 'loading';
-            })
             .addCase(newDeck.fulfilled, (state, action) => {
                 state.status = 'idle';
                 if(action.payload.errors) state.errorMessages = action.payload.errors;

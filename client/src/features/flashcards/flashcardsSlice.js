@@ -1,13 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { headers } from "../../Globals";
-//  USE FULL CRUD!!!
+
 export const fetchFlashcards = createAsyncThunk("flashcards/fetchFlashcards", async () => {
     return fetch("/flashcards")
     .then((r) => r.json())
     .then((data) => data);
 });
-
-// Create action creator for fetching ALL flaschcards!!!
 
 export const newFlashcard = createAsyncThunk("flashcards/newFlashcard", async (payload) => {
     return fetch(`/flashcards`, {
@@ -18,10 +16,10 @@ export const newFlashcard = createAsyncThunk("flashcards/newFlashcard", async (p
 });
 
 export const updateFlashcard = createAsyncThunk("flashcards/updateFlashcard", async (payload) => {
-    return fetch(`/flashcards/${payload.id}`, {
+    return fetch(`/flashcards/${payload.flashcard.id}`, {
         method: "PATCH",
         headers: headers,
-        body: JSON.stringify(payload)
+        body: JSON.stringify(payload.flashcard)
     }).then((r) => r.json())
 });
 
@@ -29,21 +27,16 @@ export const removeFlashcard = createAsyncThunk("flashcards/removeFlashcard", as
     return fetch (`/flashcards/${payload.id}`, {
         method: "DELETE"
     }).then((r) => r.json())
-})
+});
 
 const flashcardsSlice = createSlice({
     name: "flashcards",
     initialState: {
         entities: [],
         errorMessages: null,
-        status: "idle",
+        status: "idle", // Used to check if an action creator is running
     },
-    reducers: {
-        // flashcardRemoved(state, action){
-        //     const index = state.entities.findIndex(f => f.id === action.payload);
-        //     state.entities.splice(index, 1);
-        // },
-    },
+    reducers: {},
     extraReducers(builder){
         builder
             .addCase(fetchFlashcards.pending, (state) => {
@@ -51,9 +44,8 @@ const flashcardsSlice = createSlice({
             })
             .addCase(fetchFlashcards.fulfilled, (state, action) => {
                 state.status = 'idle';
-                if(action.payload.errors) {
+                if(action.payload.errors){
                     state.errorMessages = action.payload.errors;
-                    console.log(action.payload.errors);
                 }
             })
             .addCase(newFlashcard.fulfilled, (state, action) => {
@@ -62,20 +54,13 @@ const flashcardsSlice = createSlice({
             })
             .addCase(updateFlashcard.fulfilled, (state, action) => {
                 state.status = 'idle';
+                console.log(action.payload);
                 if(action.payload.errors) state.errorMessages = action.payload.errors;
             })
-            .addCase(removeFlashcard.fulfilled, (state, action) => {
-                state.status = 'idle';
-                console.log(action.payload);
-                const deck = action.payload.deck;
-                let flashcards = deck.flashcards;
-                console.log(flashcards);
-
-                const updatedFlashcards = flashcards.filter(flashcard => flashcard.id !== action.payload.id);
-                flashcards = updatedFlashcards;
+            .addCase(removeFlashcard.pending, (state) => {
+                state.status = 'pending';
             })
     }
 });
 
-// export const {flashcardRemoved} = flashcardsSlice.actions;
 export default flashcardsSlice.reducer;

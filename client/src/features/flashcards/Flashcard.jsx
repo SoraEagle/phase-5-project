@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { flashcardRemoved } from '../binders/bindersSlice';
 import { removeFlashcard } from './flashcardsSlice';
 import EditFlashcard from './EditFlashcard';
 
@@ -11,7 +12,6 @@ function Flashcard({flashcard}){ // The variable "flashcard" drilled down from D
     const thisDeck = myBinder.decks?.find(myDeck => {
       return myDeck.id === flashcard.deck_id
     });
-    console.log(thisDeck);
     return thisDeck;
   })
   const [isEditing, setIsEditing] = useState(false);
@@ -21,7 +21,8 @@ function Flashcard({flashcard}){ // The variable "flashcard" drilled down from D
   }
 
   function handleDeleteClick(){
-    dispatch(removeFlashcard(flashcard)); // Deletes the Flashcard, but doesn't correctly update state
+    dispatch(flashcardRemoved(flashcard));
+    dispatch(removeFlashcard(flashcard));
   }
   return (
     <div id='flashcard-frame'>
