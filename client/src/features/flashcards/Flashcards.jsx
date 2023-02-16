@@ -6,15 +6,11 @@ function Flashcards(){
   const user = useSelector(state => state.users.entities);
   return (
     <div>
-      {user ? (
         <ul id='list'>
-        {user?.flashcards.map(f => {
-          return <Flashcard key={f.id} flashcard={f} />
-        })}
+          {user?.flashcards.map(f => {
+            return <Flashcard key={f.id} flashcard={f} />
+          })}
       </ul>
-      ) : (
-        <h1>Something went wrong!</h1>
-      )}
     </div>
   )
 }
