@@ -7,11 +7,15 @@ function Binders(){
   return (
     <div>
       <h3>Binders</h3>
-      <ul id='list'>
+      {binders ? (
+        <ul id='list'>
         {binders?.map((b) => {
           return <BinderLink key={b.id} binder={b} />
         })}
       </ul>
+      ) : (
+        <h1>Something went wrong!  Please try again.</h1>
+      )}
     </div>
   );
 }
