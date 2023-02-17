@@ -1,19 +1,11 @@
 import React, {useState} from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { flashcardRemoved } from '../binders/bindersSlice';
 import { removeFlashcard } from './flashcardsSlice';
 import EditFlashcard from './EditFlashcard';
 
 function Flashcard({flashcard}){ // The variable "flashcard" drilled down from Deck.jsx
   const dispatch = useDispatch();
-  const binders = useSelector(state => state.binders.entities);
-
-  binders?.find(myBinder => {
-    const thisDeck = myBinder.decks?.find(myDeck => {
-      return myDeck.id === flashcard.deck_id
-    });
-    return thisDeck;
-  })
   const [isEditing, setIsEditing] = useState(false);
 
   function exitUpdateForm(){
