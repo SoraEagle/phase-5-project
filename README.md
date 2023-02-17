@@ -18,7 +18,7 @@ This project creates an website where individuals can make a User account, and m
 - React Redux 8.0.5
 
 ## Visuals
-[My Demonstration]()
+[My Demonstration](https://youtu.be/TizMzvto_qg)
 
 ## Installation
 Fork and clone this repository, and then run
