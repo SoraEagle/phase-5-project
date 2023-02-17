@@ -16,7 +16,7 @@ function Deck(){
         return thisDeck;
       }
       return thisDeck;
-    }, [binders, params.binder_id, params.id]);
+    }, [binders, thisDeck, params.binder_id, params.id]);
   return (
     <div>
       <FlashcardInput thisDeck={thisDeck} />
