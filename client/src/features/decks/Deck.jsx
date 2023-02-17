@@ -20,7 +20,7 @@ function Deck(){
   return (
     <div>
       <FlashcardInput thisDeck={thisDeck} />
-      <h3>I am a Deck</h3>
+      <h3>Deck</h3>
         {thisDeck ? <h3 id='title'>{thisDeck.name}</h3> : null}
         <ul id='list' className='flex-container'>
           {thisDeck?.flashcards.length >= 1 ? 
