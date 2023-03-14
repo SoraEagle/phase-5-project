@@ -4,7 +4,7 @@ This is the repository for my Phase 5 Project.
 ## Description
 This project uses *React*, *React-Redux*, *React-Router-Dom*.
 
-This project creates an website where individuals can make a User account, and make reservations (aka Bookings) at different Hotels.
+This project creates an website where individuals can make a User account, and create Binders, to hold Decks of Flashcards, for creating mock quizzes or for help remembering things.
 
 ## Requirements
 - Postgresql
