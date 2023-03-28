@@ -59,6 +59,6 @@ If you *do* make major edits, **do not claim this as your own original work!**
 
 *Always* reference the original work [here](https://github.com/SoraEagle/phase-5-project)
 ## Deploying
-This project has been deployed [here](https://phase-5-project-ruby.onrender.com)!
+This project is not currently deployed!  I will redeploy the project when I have the time.
 ## Licenses
 No licenses
