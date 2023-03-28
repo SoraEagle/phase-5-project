@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { logout, reset } from '../../features/users/usersSlice';
+import Username from './Username';
 
 function NavBar(){
   const user = useSelector(state => state.users.entities);
@@ -13,16 +14,14 @@ function NavBar(){
       navigate('/');
     }
   return (
-    <div id="nav">
+    <div>
+      <Username />
       {(user && !user.errors) ? (
-        <div>
-          <div>Hello, {user.username}</div>
-          <div>
-            <Link id='linkStyles' to="/" >Home</Link>
-            <Link id='linkStyles' to="/binders">My Binders</Link>
-            <Link id='linkStyles' to="/flashcards">My Flashcards</Link>
-            <button onClick={handleLogoutClick}>Log Out</button>
-          </div>
+        <div id='nav'>
+          <Link id='linkStyles' to="/" >Home</Link>
+          <Link id='linkStyles' to="/binders">My Binders</Link>
+          <Link id='linkStyles' to="/flashcards">My Flashcards</Link>
+          <button onClick={handleLogoutClick}>Log Out</button>
         </div>
       ) : (
         <div>

@@ -34,14 +34,21 @@ code {
 
 #list {
   list-style-type: none;
-  margin: auto;
+}
+
+#username {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  background-color: whitesmoke;
 }
 
 #nav {
   display: flex;
   flex-flow: row wrap;
   flex-grow: 2;
-  justify-content: center;
+  justify-content: flex-end;
+  background-color: whitesmoke;
   border-bottom: 2px solid black;
   margin: auto;
   margin-bottom: 12px;
