@@ -1,3 +1,7 @@
+html, body {
+  height: 100%;
+}
+
 body {
   display: flex;
   height: 300px;
@@ -56,9 +60,8 @@ code {
   height: 10%;
 }
 #footer {
-  flex-grow: 2;
+  flex-shrink: 0;
   border-top: 2px solid black;
-  margin-top: auto;
   background-color: whitesmoke;
 }
 
@@ -190,4 +193,8 @@ code {
 .page {
   flex-grow: 4;
   height: 60%;
+}
+
+.content {
+  flex: 1 0 auto;
 }
