@@ -9,10 +9,10 @@ function NavBar(){
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-    function handleLogoutClick(){
-      dispatch(logout(user));
-      navigate('/');
-    }
+  function handleLogoutClick(){
+    dispatch(logout(user));
+    navigate('/');
+  }
   return (
     <div id='nav'>
       <Username />
