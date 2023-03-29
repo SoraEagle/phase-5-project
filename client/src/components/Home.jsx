@@ -3,8 +3,8 @@ import React from 'react';
 function Home(){
   return (
     <div>
-      <section id='notice'>
-        <h2>Welcome to <i id='title'>Cardlet!</i></h2>
+      <section>
+        <h2>Welcome to <i>Cardlet!</i></h2>
       </section>
       <section id='home-desc'>
         <p>The purpose of this site is a simple one:</p>

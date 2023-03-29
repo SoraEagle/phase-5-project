@@ -26,12 +26,12 @@ code {
 #title {
   letter-spacing: 2px;
   margin: auto;
+  text-align: center;
 }
 
 #statement {
   padding-left: 100px;
   padding-right: 100px;
-  align-items: center;
   text-align: left;
   line-height: 1.8;
 }
@@ -73,7 +73,6 @@ code {
   padding-left: 100px;
   padding-right: 100px;
   text-indent: 50px;
-  align-items: center;
   text-align: left;
   line-height: 1.8;
 }
