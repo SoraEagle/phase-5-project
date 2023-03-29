@@ -2,11 +2,9 @@ import React from 'react';
 
 function Footer(){
   return (
-    <footer id="footer" style={{
-        textAlign: "center"
-    }}>
+    <footer id="footer">
         <p style={{textAlign: "left"}}>
-          {/* <a href="#">Top of Page</a> */}
+          <a href="">Top of Page</a>
         </p>
         <p>@2023 Redux React-or LLC</p>
         <p>All Rights Reserved</p>
