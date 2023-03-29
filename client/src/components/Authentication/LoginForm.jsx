@@ -37,7 +37,7 @@ function LoginForm(){
             <div>
                 <label htmlFor='username'>Username
                     <input type="text"
-                        id='username' value={username} placeholder='Username'
+                        value={username} placeholder='Username'
                         autoComplete="on" onChange={e => setUsername(e.target.value)}
                     />
                 </label>
@@ -45,7 +45,7 @@ function LoginForm(){
             <div>
                 <label htmlFor='password'>Password
                     <input type="password"
-                        id='password' value={password} placeholder='Password'
+                        value={password} placeholder='Password'
                         autoComplete="off" onChange={e => setPassword(e.target.value)}
                     />
                 </label>

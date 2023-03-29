@@ -37,7 +37,7 @@ function UserInput(){
         <div>
           <label>Username
             <input type="text" 
-              id='username' value={userData.username} placeholder='Username'
+              value={userData.username} placeholder='Username'
               autoComplete="on" onChange={e => setUsername(e.target.value)}
             />
           </label>
@@ -45,7 +45,7 @@ function UserInput(){
         <div>
           <label>Password
             <input type="password" 
-              id='password' value={userData.password} placeholder='Password'
+              value={userData.password} placeholder='Password'
               autoComplete='off' onChange={e => setPassword(e.target.value)}
             />
           </label>
