@@ -14,10 +14,10 @@ function NavBar(){
       navigate('/');
     }
   return (
-    <div>
+    <div id='nav'>
       <Username />
       {(user && !user.errors) ? (
-        <div id='nav'>
+        <div>
           <Link id='linkStyles' to="/" >Home</Link>
           <Link id='linkStyles' to="/binders">My Binders</Link>
           <Link id='linkStyles' to="/flashcards">My Flashcards</Link>
