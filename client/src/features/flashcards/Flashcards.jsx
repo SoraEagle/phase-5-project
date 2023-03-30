@@ -5,7 +5,7 @@ import Flashcard from './Flashcard';
 function Flashcards(){
   const user = useSelector(state => state.users.entities);
   return (
-    <div>
+    <div id='content'>
         <ul id='list'>
           {user?.flashcards.map(f => {
             return <Flashcard key={f.id} flashcard={f} />

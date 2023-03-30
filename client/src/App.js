@@ -24,7 +24,7 @@ function App(){
 
   return (
     <Router>
-      <div id="App" className="App">
+      <div id='container'>
         <NavBar />
         <Routes>
           <Route exact path={"/login"} element={<LoginForm />} />

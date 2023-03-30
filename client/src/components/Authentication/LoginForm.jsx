@@ -29,11 +29,11 @@ function LoginForm(){
         dispatch(login(userData));
     }
   return (
-    <div id='login'>
-        <section className="heading">
+    <div id='content'>
+        <section>
             <h1>Log In</h1>
         </section>
-        <form id='login-form' onSubmit={handleSubmit}>
+        <form id='input-form' onSubmit={handleSubmit}>
             <div>
                 <label htmlFor='username'>Username
                     <input type="text"

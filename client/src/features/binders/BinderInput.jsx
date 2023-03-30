@@ -28,7 +28,7 @@ function BinderInput(){
       <form id='input-form' onSubmit={handleSubmit}>
         <label>
           Binder Name
-          <input id='binder-input-name'
+          <input
             type="text" name="name" value={name} 
             onChange={e => setName(e.target.value)}
           />

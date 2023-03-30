@@ -29,11 +29,11 @@ function UserInput(){
     dispatch(signup(userData));
   }
   return (
-    <div id='signup'>
-      <section className="heading">
+    <div id='content'>
+      <section>
         <h1>Please create an account</h1>
       </section>
-      <form id='signup-form' onSubmit={handleSubmit}>
+      <form id='input-form' onSubmit={handleSubmit}>
         <div>
           <label>Username
             <input type="text" 

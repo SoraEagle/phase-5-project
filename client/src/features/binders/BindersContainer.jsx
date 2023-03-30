@@ -11,7 +11,7 @@ function BindersContainer(){
     dispatch(fetchBinders());
   }, [dispatch]);
   return (
-    <div>
+    <div id='content'>
       <BinderInput />
       <Binders />
     </div>

@@ -6,14 +6,14 @@ import DeckInput from '../decks/DeckInput';
 
 function Binder(){
   const params = useParams();
-  const binders = useSelector((state) => state.binders.entities); // Coming from bindersSlice
+  const binders = useSelector((state) => state.binders.entities);
 
   const theBinder = binders.find(binder => {
     return  binder.id.toString() === params.id;
   });
   
   return (
-    <div>
+    <div id='content'>
       <DeckInput />
       {theBinder ? <h3 id='title'>{theBinder.name}</h3> : null}
       <ul id='list'>

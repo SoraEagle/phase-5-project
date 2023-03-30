@@ -1,5 +1,6 @@
 html, body {
   height: 100%;
+  margin: 0;
 }
 
 body {
@@ -21,6 +22,37 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  text-align: center;
+}
+
+#content {
+  flex: 1 0 auto;
+  min-height: 80vh;
+}
+
+#nav {
+  display: flex;
+  flex-flow: row wrap;
+  flex-grow: 2;
+  justify-content: flex-end;
+  background-color: whitesmoke;
+  border-bottom: 2px solid black;
+  margin: auto;
+  margin-bottom: 12px;
+  width: 100%;
+  height: 10%;
+}
+#footer {
+  flex-shrink: 0;
+  border-top: 2px solid black;
+  background-color: whitesmoke;
+  text-align: center;
 }
 
 #title {
@@ -47,30 +79,8 @@ code {
   background-color: whitesmoke;
 }
 
-#nav {
-  display: flex;
-  flex-flow: row wrap;
-  flex-grow: 2;
-  justify-content: flex-end;
-  background-color: whitesmoke;
-  border-bottom: 2px solid black;
-  margin: auto;
-  margin-bottom: 12px;
-  width: 100%;
-  height: 10%;
-}
-#footer {
-  flex-shrink: 0;
-  border-top: 2px solid black;
-  background-color: whitesmoke;
-  text-align: center;
-}
 
-#home-desc {
-  text-align: center;
-}
-#home-paragraph {
-  flex-grow: 4;
+#paragraph {
   padding-left: 100px;
   padding-right: 100px;
   text-indent: 50px;
@@ -82,22 +92,17 @@ code {
 #input-form {
   display: inline-block;
   border: 2px solid black;
+  padding: 10px;
+}
+#input-form input {
+  width: 100%;
+  clear: both;
 }
 
-#binder-form {
-  padding-bottom: 20px;
-}
-#binder-input-name {
-  margin-left: 10px;
-  margin-right: 10px;
-}
 #binder-link {
   align-self: center;
   padding-bottom: 10px;
   border-top: 2px solid black;
-}
-#binder-name {
-  padding-top: 20px;
 }
 #binder-image {
   width: 100px;
@@ -188,13 +193,4 @@ code {
   flex-flow: row wrap;
   justify-content: space-around;
   align-content: space-around;
-}
-
-.page {
-  flex-grow: 4;
-  height: 60%;
-}
-
-.content {
-  flex: 1 0 auto;
 }

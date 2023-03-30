@@ -6,7 +6,7 @@ function Binders(){
   const binders = useSelector(state => state.binders.entities);
   console.log(binders);
   return (
-    <div>
+    <div id='content'>
       <h3>Binders</h3>
       {(binders.length > 0) ? (
         <ul id='list'>
