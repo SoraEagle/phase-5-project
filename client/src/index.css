@@ -55,6 +55,10 @@ code {
   text-align: center;
 }
 
+#link {
+  padding: 10px;
+}
+
 #title {
   letter-spacing: 2px;
   margin: auto;
