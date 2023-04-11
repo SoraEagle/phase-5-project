@@ -27,7 +27,7 @@ function Home(){
         </p>
         <li id='statement'>Leave groups of my notes in folders to keep them organized,</li>
         <li id='statement'>Add new folders and notes,</li>
-        <li id='statement'>Edit or delete them,</li>
+        <li id='statement'>Edit any existing flashcards,</li>
         <li id='statement'>or delete any notes or folders I felt that I no longer needed</li>
       </section>
     </div>
