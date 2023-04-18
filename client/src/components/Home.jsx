@@ -23,12 +23,12 @@ function Home(){
         </p>
         <p id='paragraph'>
           That's when I had the bright idea to use what I was learning in Web Development to (you guessed it) make my <b><i>very own website for taking notes</i></b>!
-          This way, I can:
+          This way, users can:
         </p>
-        <li id='statement'>Leave groups of my notes in folders to keep them organized,</li>
-        <li id='statement'>Add new folders and notes,</li>
+        <li id='statement'>organize their notes in different binders,</li>
+        <li id='statement'>Add new folders and decks of flashcards,</li>
         <li id='statement'>Edit any existing flashcards,</li>
-        <li id='statement'>or delete any notes or folders I felt that I no longer needed</li>
+        <li id='statement'>or delete any notes or folders that are no longer needed</li>
       </section>
     </div>
   )
