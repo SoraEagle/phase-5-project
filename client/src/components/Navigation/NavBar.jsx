@@ -18,10 +18,12 @@ function NavBar(){
       <Username />
       {(user && !user.errors) ? (
         <div>
-          <Link id='linkStyles' to="/" >Home</Link>
-          <Link id='linkStyles' to="/binders">My Binders</Link>
-          <Link id='linkStyles' to="/flashcards">My Flashcards</Link>
-          <button onClick={handleLogoutClick}>Log Out</button>
+          <p>
+            <Link id='linkStyles' to="/" >Home</Link>
+            <Link id='linkStyles' to="/binders">My Binders</Link>
+            <Link id='linkStyles' to="/flashcards">My Flashcards</Link>
+            <button onClick={handleLogoutClick}>Log Out</button>
+          </p>
         </div>
       ) : (
         <div>
