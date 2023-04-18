@@ -51,6 +51,10 @@ You can use the following commands to run the application:
 
 - Implementing OAuth for login/signup
 
+- Add an user profile page
+
+- Add an user dropdown
+
 I may update this code to include other features, if I have the time for it in the future.
 
 ## Contributing
