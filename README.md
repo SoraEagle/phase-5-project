@@ -32,7 +32,7 @@ to install the gems.
 ## Usage
 Using two seperate terminals:
 
-- In the first terminal, start up the Postgresql database with 
+- In the first terminal, start up the Postgresql database with
 ```
 sudo service postgresql start
 ```
@@ -47,9 +47,12 @@ You can use the following commands to run the application:
 - `npm start --prefix client`: Run the frontend on [port 4000](http://localhost:4000)
 - `npm start`: An alternative to `npm start --prefix client`, but must be used while in the `client` folder of the project's directory
 ## Roadmap
+`Planned Features`:
+
+- Implementing OAuth for login/signup
+
 I may update this code to include other features, if I have the time for it in the future.
 
-Otherwise, I currently have no plans to update this application.
 ## Contributing
 Pull requests are welcome.
 
