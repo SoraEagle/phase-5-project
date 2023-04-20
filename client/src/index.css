@@ -162,13 +162,15 @@ code {
   transform: rotateY(180deg);
 }
 
+#edit-button, #delete-button {
+  display: flex;
+  color: white;
+}
 #edit-button {
   background-color: chocolate;
-  color: white;
 }
 #delete-button {
   background-color: maroon;
-  color: white;
 }
 
 /* For medium screens */

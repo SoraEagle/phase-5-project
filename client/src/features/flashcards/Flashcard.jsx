@@ -28,8 +28,8 @@ function Flashcard({flashcard}){ // The variable "flashcard" drilled down from D
           </div>
         </div>
       )}
-      <button id='edit-button' onClick={() => setIsEditing((isEditing) => !isEditing)}>Edit</button>
-      <button id='delete-button' onClick={handleDeleteClick}>Delete Flashcard</button>
+      <button id='edit-button' className='flashcard-button' onClick={() => setIsEditing((isEditing) => !isEditing)}>Edit</button>
+      <button id='delete-button' className='flashcard-button' onClick={handleDeleteClick}>Delete Flashcard</button>
     </div>
   )
 }
