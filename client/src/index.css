@@ -99,7 +99,7 @@ code {
   padding: 10px;
 }
 #input-form input {
-  width: 100%;
+  width: fit-content;
   clear: both;
 }
 
@@ -199,4 +199,13 @@ code {
   flex-flow: row wrap;
   justify-content: space-around;
   align-content: space-around;
+}
+
+.buttons {
+  width: 100%;
+  table-layout: fixed;
+}
+.buttons button {
+  width: 10%;
+  white-space: normal;
 }
