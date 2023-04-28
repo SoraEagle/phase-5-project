@@ -3,7 +3,7 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { fetchUser } from './features/users/usersSlice';
 import { fetchBinders } from './features/binders/bindersSlice';
-import './App.css';
+import './App.scss';
 import NavBar from './components/Navigation/NavBar';
 import Footer from './components/Footer';
 import Home from './components/Home';
