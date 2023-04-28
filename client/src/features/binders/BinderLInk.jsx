@@ -9,7 +9,7 @@ function BinderLink({binder}){
             alt={binder.name}
         />
         <p>&nbsp;</p>
-        <Link id='linkStyles' to={`/binders/${binder.id}`}>
+        <Link id='linkStyles' className='link' to={`/binders/${binder.id}`}>
             {binder.name}
         </Link>
     </div>

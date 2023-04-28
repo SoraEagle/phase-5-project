@@ -9,7 +9,7 @@ function DeckLink({binder, deck}){
             alt={deck.name}
          />
          <p>&nbsp;</p>
-         <Link id='linkStyles' to={`/binders/${binder.id}/decks/${deck.id}`}>
+         <Link id='linkStyles' className='link' to={`/binders/${binder.id}/decks/${deck.id}`}>
             {deck.name}
          </Link>
     </div>
