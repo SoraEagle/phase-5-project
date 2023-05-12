@@ -19,19 +19,22 @@ function Flashcard({flashcard}){ // The variable "flashcard" drilled down from D
   return (
     <div id='flashcard-frame'>
       {isEditing ? (
-        <EditFlashcard flashcard={flashcard} onExitForm={exitUpdateForm} />
+        <div>
+          <EditFlashcard flashcard={flashcard} onExitForm={exitUpdateForm} />
+          <button id='edit-button' className='flashcard-button' onClick={() => setIsEditing(false)}>Discard Edits</button>
+        </div>
       ) : (
-        <div key={flashcard.id} id='flashcard'>
-          <div id='flashcard-inner'>
-            <div key={flashcard.question} id='flashcard-front'>{flashcard.question}</div>
-            <div key={flashcard.answer} id='flashcard-back'>{flashcard.answer}</div>
+        <div>
+          <div key={flashcard.id} id='flashcard'>
+            <div id='flashcard-inner'>
+              <div key={flashcard.question} id='flashcard-front'>{flashcard.question}</div>
+              <div key={flashcard.answer} id='flashcard-back'>{flashcard.answer}</div>
+            </div>
           </div>
+            <button id='edit-button' className='flashcard-button' onClick={() => setIsEditing(true)}>Edit</button>
+            <button id='delete-button' className='flashcard-button' onClick={handleDeleteClick}>Delete Flashcard</button>
         </div>
       )}
-      <div className='buttons'>
-        <button id='edit-button' className='flashcard-button' onClick={() => setIsEditing((isEditing) => !isEditing)}>Edit</button>
-        <button id='delete-button' className='flashcard-button' onClick={handleDeleteClick}>Delete Flashcard</button>
-      </div>
     </div>
   )
 }
