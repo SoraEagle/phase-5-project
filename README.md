@@ -55,7 +55,7 @@ You can use the following commands to run the application:
 
 - Add an user dropdown
 
-- Add onClick event for flipping flashcards
+- Change the flashcard's Edit and Delete buttons to be visible depending on the value of `isEditing`
 
 I may update this code to include other features, if I have the time for it in the future.
 
