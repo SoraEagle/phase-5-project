@@ -50,7 +50,7 @@ function EditFlashcard({flashcard, onExitForm}){
                     />
                 </label>
                 <br />
-                <button type="submit">Edit Flashcard</button>
+                <button type="submit">Save Edits</button>
                 <br />
                 {errors?.map((err) => (
                     <p id='errors' key={err}>{err}</p>
