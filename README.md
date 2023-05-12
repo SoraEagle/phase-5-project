@@ -4,7 +4,7 @@ This is the repository for my Phase 5 Project.
 ## Description
 This project uses *React*, *React-Redux*, *React-Router-Dom*.
 
-This project creates an website where individuals can make a User account, and create Binders, to hold Decks of Flashcards, for creating mock quizzes or for help remembering things.
+This project creates an website where individuals can make a user account, and create binders, to hold decks of flashcards, for creating mock quizzes or for help remembering things.
 
 ## Requirements
 - Postgresql
@@ -54,6 +54,8 @@ You can use the following commands to run the application:
 - Add an user profile page
 
 - Add an user dropdown
+
+- Add onClick event for flipping flashcards
 
 I may update this code to include other features, if I have the time for it in the future.
 
