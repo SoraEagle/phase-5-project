@@ -33,7 +33,7 @@ function DeckInput(){
       <form id='input-form' onSubmit={handleSubmit}>
         <label>
           Deck Name
-          <input id='deck-input-name'
+          <input
             type="text" name="name"
             value={name} onChange={e => setName(e.target.value)}
           />
