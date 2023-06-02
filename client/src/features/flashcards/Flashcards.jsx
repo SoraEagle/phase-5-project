@@ -6,7 +6,7 @@ function Flashcards(){
   const user = useSelector(state => state.users.entities);
   return (
     <div id='content'>
-        <ul id='list'>
+        <ul id='list' className='flex-container'>
           {user?.flashcards.map(f => {
             return <Flashcard key={f.id} flashcard={f} />
           })}
