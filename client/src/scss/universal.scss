@@ -1,0 +1,26 @@
+#content {
+    flex: 1 0 auto;
+    min-height: 80vh;
+}
+
+  /* Find way to align the text fields and labels... */
+#input-form {
+    display: inline-block;
+    border: 2px solid black;
+    padding: 10px;
+}
+  #input-form input {
+    width: fit-content;
+clear: both;
+}
+
+#link {
+    align-self: center;
+    padding-bottom: 10 px;
+    border-top: 2px solid black;
+}
+
+#image {
+    width: 100px;
+    height: 100px;
+  }

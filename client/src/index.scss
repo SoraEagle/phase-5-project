@@ -1,6 +1,8 @@
-@use '../src/scss/flashcard.scss';
+@use '../src/scss/universal.scss';
 @use '../src/scss/nav.scss';
 @use '../src/scss/footer.scss';
+@use '../src/App.scss';
+@use '../src/scss/flashcard.scss';
 
 html, body {
   height: 100%;
@@ -26,22 +28,6 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-
-#container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  text-align: center;
-}
-
-#content {
-  flex: 1 0 auto;
-  min-height: 80vh;
-}
-
-#link {
-  padding: 10px;
 }
 
 #title {
@@ -76,39 +62,6 @@ code {
   text-align: left;
   line-height: 1.8;
 }
-
-/* Find way to align the text fields and labels... */
-#input-form {
-  display: inline-block;
-  border: 2px solid black;
-  padding: 10px;
-}
-#input-form input {
-  width: fit-content;
-  clear: both;
-}
-
-#binder-link {
-  align-self: center;
-  padding-bottom: 10px;
-  border-top: 2px solid black;
-}
-#binder-image {
-  width: 100px;
-  height: 100px;
-}
-
-#deck-link {
-  align-self: center;
-  padding-bottom: 10 px;
-  border-top: 2px solid black;
-}
-#deck-image {
-  width: 100px;
-  height: 100px;
-}
-
-
 
 /* For medium screens */
 @media all and (max-width: 800px){
