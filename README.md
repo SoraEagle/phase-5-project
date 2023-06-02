@@ -49,6 +49,8 @@ You can use the following commands to run the application:
 ## Roadmap
 `Planned Features`:
 
+- Randomize the order of the flashcards
+
 - Implementing OAuth for login/signup
 
 - Add an user profile page
