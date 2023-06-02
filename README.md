@@ -55,6 +55,10 @@ You can use the following commands to run the application:
 
 - Add an user dropdown
 
+- Allow deleting binders and decks
+
+- Deleting an binder or deck also deletes its child objects
+
 I may update this code to include other features, if I have the time for it in the future.
 
 ## Contributing
