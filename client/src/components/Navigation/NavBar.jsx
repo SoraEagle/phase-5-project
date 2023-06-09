@@ -30,7 +30,9 @@ function NavBar(){
           {!(window.location.href.indexOf("/login") > -1) ? (
             <Link id='linkStyles' onClick={() => dispatch(reset())} to='/login'>Login</Link>
           ) : (null)}
-          <Link id='linkStyles' onClick={() => dispatch(reset())} to='signup'>Signup</Link>
+           {!(window.location.href.indexOf("/signup") > -1) ? (
+            <Link id='linkStyles' onClick={() => dispatch(reset())} to='signup'>Signup</Link>
+          ) : (null)}
         </div>
       )}
     </div>
