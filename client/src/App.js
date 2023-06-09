@@ -16,11 +16,6 @@ import Deck from './features/decks/Deck';
 
 function App(){
   const dispatch = useDispatch();
-  const d = new Date();
-  const month = d.getMonth();
-
-  console.log(d);
-  console.log("Month ", month, " of 12");
 
   useEffect(() => {
     dispatch(fetchUser());
