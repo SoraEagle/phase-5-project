@@ -51,15 +51,17 @@ You can use the following commands to run the application:
 
 - Randomize the order of the flashcards
 
+- Disable the rendering of the "Log In" button when on the login page
+
 - Implementing OAuth for login/signup
-
-- Add an user profile page
-
-- Add an user dropdown
 
 - Allow deleting binders and decks
 
 - Deleting an binder or deck also deletes its child objects
+
+- Add an user profile page
+
+- Add an user dropdown
 
 I may update this code to include other features, if I have the time for it in the future.
 
