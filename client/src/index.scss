@@ -30,37 +30,11 @@ code {
     monospace;
 }
 
-#title {
-  letter-spacing: 2px;
-  margin: auto;
-  text-align: center;
-}
-
-#statement {
-  padding-left: 100px;
-  padding-right: 100px;
-  text-align: left;
-  line-height: 1.8;
-}
-
-#list {
-  list-style-type: none;
-}
-
 #username {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   background-color: whitesmoke;
-}
-
-
-#paragraph {
-  padding-left: 100px;
-  padding-right: 100px;
-  text-indent: 50px;
-  text-align: left;
-  line-height: 1.8;
 }
 
 /* For medium screens */
