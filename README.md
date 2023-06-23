@@ -51,7 +51,13 @@ You can use the following commands to run the application:
 
 - Randomize the order of the flashcards
 
-- Implementing OAuth for login/signup
+- Implementing Auth0 for:
+
+   - Login / Signup
+
+   - Logout
+
+   - Showing User Profile Info
 
 - Allow deleting binders and decks
 
