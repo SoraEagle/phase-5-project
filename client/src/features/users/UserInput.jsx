@@ -27,6 +27,8 @@ function UserInput(){
   function handleSubmit(e){
     e.preventDefault();
     dispatch(signup(userData));
+    setUsername('');
+    setPassword('');
   }
   return (
     <div id='content'>

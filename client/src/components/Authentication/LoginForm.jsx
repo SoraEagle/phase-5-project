@@ -27,6 +27,8 @@ function LoginForm(){
     function handleSubmit(e){
         e.preventDefault();
         dispatch(login(userData));
+        setUsername('');
+        setPassword('');
     }
   return (
     <div id='content'>
