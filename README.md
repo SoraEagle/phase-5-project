@@ -49,8 +49,16 @@ You can use the following commands to run the application:
 ## Roadmap
 `Planned Features`:
 
+NOTE: Some of these features will be tested and/or implemented on different branches.  They will be labeled as such. 
+
+`main`:
 - Randomize the order of the flashcards
 
+- Allow deleting binders and decks
+
+- Deleting an binder or deck also deletes its child objects
+
+`auth0-test`:
 - Implementing Auth0 for:
 
    - Login / Signup
@@ -59,13 +67,15 @@ You can use the following commands to run the application:
 
    - Showing User Profile Info
 
-- Allow deleting binders and decks
-
-- Deleting an binder or deck also deletes its child objects
+`user`:
 
 - Add an user profile page
 
 - Add an user dropdown
+
+`binder-deck-experimentation`:
+
+- Add place to add an optional picture to the binder or deck
 
 I may update this code to include other features, if I have the time for it in the future.
 
